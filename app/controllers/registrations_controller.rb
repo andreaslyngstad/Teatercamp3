@@ -3,7 +3,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.xml
   def index
-    @camps = Camp.where("public IS ?", true)
+    @camps = Camp.where(:public => true)
     
     
     @registrations = Registration.order("created_at ASC").where(:camp_id => @camps)

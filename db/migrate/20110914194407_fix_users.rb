@@ -1,20 +1,11 @@
 class FixUsers < ActiveRecord::Migration
   def self.up
-    drop_table "users"
-    create_table "users", :force => true do |t|
-      t.column :login,                     :string, :limit => 40
-      t.column :first_name,                :string, :limit => 100, :default => '', :null => true
-      t.column :last_name,                 :string, :limit => 100, :default => '', :null => true
-      t.column :email,                     :string, :limit => 100
-      t.column :password_hash,             :string
-      t.column :password_salt,             :string
-      t.column :created_at,                :datetime
-      t.column :updated_at,                :datetime
-
-    end
-    add_index :users, :login, :unique => true
+      add_column :users, :password_hash, :reminder_date, :string  
+      add_column :users, :password_salt, :reminder_date, :string
+      remove_column :users, :remember_token
+      remove_column :users, :crypted_password
+      remove_column :users, :remember_token_expires_at
+    
   end
 
-  def self.down
-  end
 end

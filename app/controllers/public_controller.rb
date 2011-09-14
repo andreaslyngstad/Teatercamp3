@@ -79,7 +79,7 @@ class PublicController < ApplicationController
    def camps
      @parents = Page.roots
     @option = Option.first
-     @camps = Camp.where("public IS ?", true)
+     @camps = Camp.where(:public => true)
      if params[:id]
      @camp = Camp.find(params[:id])
      end
