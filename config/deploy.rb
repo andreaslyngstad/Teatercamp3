@@ -1,3 +1,4 @@
+require "bundler/capistrano"
 set :application, "teatercamp.no"
 role :app, application
 role :web, application
