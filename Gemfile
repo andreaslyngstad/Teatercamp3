@@ -1,24 +1,20 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.0.10'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem "redcarpet"
 gem "pdfkit"
 gem 'sqlite3'
-gem 'tabulous', :git => 'git@github.com:andreaslyngstad/tabulous.git'
+gem 'tabulous'
 gem 'better_nested_set'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip", "~> 2.3"
 gem 'jquery-rails'
 gem "capistrano"
 
-group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'uglifier'
-end
+
 
 gem 'jquery-rails'
 # Use unicorn as the web server

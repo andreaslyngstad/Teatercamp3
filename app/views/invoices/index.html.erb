@@ -18,6 +18,7 @@
 <% @invoices.each do |invoice| %>
 <tr>
 <td>
+<% if invoice.sent == true%>
 <% if invoice.credit_note.nil? %>	
 <% if invoice.paid? %>
 <a href='#' class='toggle checked' id="paid_<%= invoice.id.to_s %>" data_id='<%= invoice.id.to_s %>'  ref='<%= invoice.id %>'>Ja</a>
@@ -28,6 +29,9 @@
 <span class="spinning" id="paid_spinning_<%= invoice.id.to_s  %>" style="display:none;"></span>
 <% else %>
 kreditt
+<% end -%>
+<% else %>
+Ikke sendt
 <% end -%>
 </td>
 <td><%= invoice.number %></td>
