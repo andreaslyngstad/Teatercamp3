@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(:default, Rails.env) if defined?(Bundler)
+Bundler.require(:default, Rails.env) if defined?(Bundler)
 Mime::Type.register 'application/pdf', :pdf
 module Teatercamp3
   class Application < Rails::Application
