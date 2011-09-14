@@ -1,0 +1,35 @@
+<h1>Kontakter</h1>
+<form>
+    <input type="text" id="search">
+</form>
+<table class="tablesorter" cellspacing="0" cellpadding="0">
+	<thead>
+<tr>
+	
+
+<th class="header">Navn</th>
+<th class="header">Epost</th>
+<th class="header">Camp</th>
+</tr>
+</thead>
+<tbody>
+<% @contacts.each do |contact|%>
+<tr>
+<td><%= contact.name %></td>
+<td><%= mail_to contact.billing_email %></td>
+<% if contact.camp %>
+<td><%= contact.camp.name %></td>
+<% else %>
+<td>"Slettet"</td>
+<% end %>
+<td>
+<%= link_to 'Vis', registration_path(contact) %>
+<%= link_to 'Oppdater', edit_registration_path(contact) %>
+<%= link_to 'Slett', contact_path(contact), :confirm => 'Er du sikker på at du vil slette denne kontakten', :method => :delete %>
+</td>
+</tr>
+<% end %>
+<tbody> 
+</table>
+
+

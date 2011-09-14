@@ -1,0 +1,31 @@
+<div class="thumb_nav_wrapper">
+<nav>
+	<ul class="thumb_nav">
+		<% @parents.each do |page|  %>
+		<li><%= image_tag(page.nav_photo.url(:small)) %></li>
+		<% end  %>		
+		<li><%= image_tag(@option.blogg_photo.url(:small)) %></li>
+		<li><%= image_tag(@option.camp_photo.url(:small)) %></li>
+	</ul>
+		<ul class="pos_nav">
+	<% @parents.each do |page|  %>
+	<% if @page == page or page.children.include?(@page)%>
+	<li class="active"><%= link_to page.navlabel, view_page_path(page.name) %> </li>
+	<% else %>
+	<li><%= link_to page.navlabel, view_page_path(page.name) %> </li>
+	<% end  %>
+	<% end  %>
+	<% if  request.url.include?("view_post") or request.url.include?("view_blogg")%>
+	<li class="active"><%= link_to "Nyheter",  view_blogg_path%></li>
+	<% else %>
+	<li><%= link_to "Nyheter",  view_blogg_path%></li>
+	<% end  %>
+	<% if  request.url.include?("view_camps") or request.url.include?("registrations") or request.url.include?("view_camp")%>
+	<li class="active"><%= link_to "Kurs", view_camps_path%></li>
+	<% else %>
+	<li><%= link_to "Kurs", view_camps_path%></li>
+	<% end  %>
+	</ul>
+	
+</nav>
+</div>

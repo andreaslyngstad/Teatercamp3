@@ -1,0 +1,37 @@
+<table class="invoice_show" border="0" cellspacing="5" cellpadding="10">
+	<tr><td>Faktura nummer</td>
+		<td><%= @invoice.number %></td>
+	</tr>
+	<tr><td>Deltager</td><td><%= @invoice.registration.name %></td></tr>
+	<tr><td>Faktura epost</td><td><%= @invoice.registration.billing_email %></td></tr>
+	<tr><td>Kurs</td><td><%= @invoice.registration.camp.name %></td></tr>
+
+	<tr style="font-weight: bold;"><td>Products</td><td>eks mva</td><td>mva</td><td>mva prosent</td><td>total</td></tr>
+	<% @invoice.registration.camp.products.each do |product| %>
+	<tr><td><%= product.description %></td>
+		<td style="text-align: right;"><%= number_to_currency(product.eks_vat) %></td>
+		<td style="text-align: right;"><%= number_to_currency(product.vat_in_currency) %></td>
+		<td style="text-align: right;"><%=  number_to_percentage(product.vat) %></td>
+		<td style="text-align: right;"><%= number_to_currency(product.total_price) %></td>
+		</tr>
+	
+	<% end -%>
+	<tr><td style="border-top: 1px solid #000;">Total</td>
+	<td style="text-align: right;border-top: 1px solid #000;"><%= number_to_currency(@invoice.registration.camp.total_eks_vat) %></td>
+	<td style="text-align: right;border-top: 1px solid #000;"><%= number_to_currency(@invoice.registration.camp.total_vat) %></td>
+	<td></td>
+
+	<td style="text-align: right;border-top: 1px solid #000;"><%= number_to_currency(@invoice.registration.camp.products.sum(:total_price)) %></td>
+	</tr>
+	<% if !@invoice.credit_note.nil? %>
+	<tr style="color:red;">
+		<td>Kreditnota</td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td><%= @invoice.credit_note.total %></td>
+		
+	</tr>
+	<% end -%>
+</table>
+

@@ -1,0 +1,11 @@
+<% if target.errors.any? %>
+<div id="errorExplanation">
+  <h2>Kunne ikke lagre pågrunn av <%= target.errors.count %> feil</h2>
+  <ul>
+  <% target.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    
+  <% end %>
+  </ul>
+</div>
+<% end %>

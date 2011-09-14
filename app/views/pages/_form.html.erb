@@ -1,0 +1,72 @@
+ 
+<%= form_for(@page, :html => { :multipart => true }) do |f| %>
+ <%= render "shared/error_message", :target => @page %>
+  
+    <ul class="form_layout_adm_l">
+    <li><label>&nbsp;</label><%= f.submit "Lagre",:class => 'submit' %></li>	
+	<li><%= f.label :navn %></li>  
+    <li><%= f.text_field :name, :size => 80, :style => "font-size: 1.5em"%></li> 
+	<li><%= f.label :tittel %></li>    
+	<li><%= f.text_field :title %></li>
+	<li><%= f.label :Velg_forelder %></li>
+	
+  	<li><span id="selecter_parent">
+		<%= f.select :proposed_parent_id, 
+		@page.available_parents.map{|page| [padded_page_name(page,2,"-"), page.id]}, :include_blank => true %>
+	</span></li>
+	<li><%= f.label :Link_til_denne_siden %></li>
+	<li><%= f.text_field :navlabel  %></li>
+	<span id=nav_photo>
+	<li><%= f.label :Bilde_til_link %></li>
+	<li><%= f.file_field :nav_photo %></li></span>
+    <li><%= f.label :innhold %></li>   
+	<li><%= f.text_area :body, :width => '100%', :height => '500px'%></li>
+		  
+	<li><label>&nbsp;</label><%= f.submit "Lagre",:class => 'submit' %></li></ul>  
+	
+<% end %>
+
+<div class="formatting"> 
+            Use Markdown for formatting. 
+            <div class="markdown_examples" > 
+              <table> 
+                <tr> 
+                  <td><pre>[Link](http://example.com/)</pre></td> 
+                  <td><a href="http://example.com/">Link</a></td> 
+                </tr> 
+                <tr> 
+                  <td><pre>*Italic*</pre></td> 
+                  <td><em>Italic</em></td> 
+                </tr> 
+                <tr> 
+                  <td><pre>**Bold**</pre></td> 
+                  <td><strong>Bold</strong></td> 
+                </tr> 
+                <tr> 
+                  <td><pre> 
+* Listed
+* Items
+                  </pre></td> 
+                  <td><ul><li>Listed</li><li>Items</li></ul></td> 
+                </tr> 
+               
+                <tr> 
+                  <td><pre>![Alt text](/path/to/img.jpg)</pre></td> 
+                  <td><img src="/path/to/img.jpg" alt="Alt text"/></td> 
+                </tr> 
+                <tr> 
+                  <td> <pre># Level 1 Header (H1)
+## Level 2 Header (H2)
+##### Level 5 Header (H5)
+</pre>
+                  </td> 
+                  <td> <h1>Level‌ 1‌ Header‌ (H1)</h1>  <h2>Level‌ 2‌ Header‌ (H2)</h2> <h5>Level‌ 5‌ Header‌ (H5)</h5>
+ 
+</td> 
+                </tr> 
+  
+                
+              </table> 
+              <a href="http://support.mashery.com/docs/customizing_your_portal/Markdown_Cheat_Sheet" target="blank">more</a>
+            </div> 
+          </div> 

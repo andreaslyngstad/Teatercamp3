@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  total_price: 1.5
+  description: MyString
+  vat: 1.5
+  camp_id: 1
+
+two:
+  total_price: 1.5
+  description: MyString
+  vat: 1.5
+  camp_id: 1

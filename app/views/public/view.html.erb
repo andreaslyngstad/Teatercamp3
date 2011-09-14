@@ -1,0 +1,22 @@
+<% @page_title = @page.title %>
+<%= render "nav" %>
+<div class="children_nav">
+	<% if @page.parent.nil?%>
+		<% @page.children.each do |page|%>
+		<%= link_to page.navlabel, view_page_path(page.name) %>
+		<% end %>
+	<%else%>
+		<% @page.self_and_siblings.each do |page|%>
+		<% if @page == page %>
+		<%= link_to page.navlabel, view_page_path(page.name), :class => "active_sub" %>
+		<% else %>
+		<%= link_to page.navlabel, view_page_path(page.name) %>
+	<%end%>
+	<%end%>
+	<%end%>
+	</div>
+<div class="view_content">
+		
+	
+<%= render "page_content" %>
+</div>

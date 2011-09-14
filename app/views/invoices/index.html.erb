@@ -1,0 +1,74 @@
+<h1>Fakturaer</h1>
+<form>
+    <input type="text" id="search">
+</form>
+<table class="tablesorter" cellspacing="0" cellpadding="0">
+	<thead>
+<tr>
+<th class="header">Betalt</th>	
+<th class="header">Nummer</th>
+<th class="header">Navn</th>
+<th class="header">Epost</th>
+<th class="header">Camp</th>
+<th class="header">total</th>
+<th class="header"></th>
+</tr>
+</thead>
+<tbody>
+<% @invoices.each do |invoice| %>
+<tr>
+<td>
+<% if invoice.credit_note.nil? %>	
+<% if invoice.paid? %>
+<a href='#' class='toggle checked' id="paid_<%= invoice.id.to_s %>" data_id='<%= invoice.id.to_s %>'  ref='<%= invoice.id %>'>Ja</a>
+<% else %>
+<a href='#' class='toggle' id="paid_<%= invoice.id.to_s %>" data_id='<%= invoice.id %>' ref='<%= invoice.id %>'>Nei</a>
+<% end %>
+
+<span class="spinning" id="paid_spinning_<%= invoice.id.to_s  %>" style="display:none;"></span>
+<% else %>
+kreditt
+<% end -%>
+</td>
+<td><%= invoice.number %></td>
+<td><%= invoice.registration.name %></td>
+<td><%= invoice.registration.billing_email %></td>
+<td><%= invoice.registration.camp.name %></td>
+<% if invoice.credit_note.nil? %>
+<td><%= number_to_currency(invoice.registration.camp.products.sum(:total_price)) %></td>
+	<% else %>
+	<td style="color:red;"><%= number_to_currency(invoice.credit_note.total) %></td>
+	<% end -%>
+<td>
+
+	<% if invoice.paid == false  %>
+	<% if invoice.credit_note.nil? %>
+		<% if invoice.sent == true%>
+			<% if !invoice.reminder_date.nil? %>
+			Påminnelse sendt <%= invoice.reminder_date.strftime('%d.%m.%Y')%>
+			<span class="send_link_wr"><a class="send_link_reminder" data-object="invoice" data-id="<%= invoice.id.to_s %>">Påminnelse</a></span>
+			<% else %>
+			Sendt <%= invoice.made_date.strftime('%d.%m.%Y')%>
+			<span class="send_link_wr"><a class="send_link_reminder" data-object="invoice" data-id="<%= invoice.id.to_s %>">Påminnelse</a></span>
+			<% end -%>
+		<% else %>
+		<span class="send_link_wr"><a class="send_link" id="send_link_<%= invoice.id.to_s  %>"data-object="invoice" data-id="<%= invoice.id.to_s %>">Send</a></span>
+		<% end -%>
+		<span class="spinning" id="spinning_<%= invoice.id.to_s  %>" style="display:none;"></span>
+		
+		<%= link_to 'Kredit', credit_note_path(invoice), :confirm => 'Er du sikker på at du vil lage en kreditnota på #{invoice.number}'%>
+		<% else %>
+	<%= link_to 'Vis_kredit_nota', show_credit_note_path(invoice)%>
+	<% end -%>
+	
+<% end -%>
+<%= link_to 'Vis', invoice_path(invoice) %>
+
+</td>
+
+</tr>
+<% end %>
+<tbody> 
+</table>
+
+

@@ -1,0 +1,15 @@
+
+
+	<div id="content_l">
+<%= form_for @image, :html => { :multipart => true }  do |f|%>
+	<ul class="form_layout">
+		
+
+		<%= f.hidden_field :use, :value => "false"%>
+		<li><%= f.file_field :photo%></li>
+		
+		<li><%= f.submit "Submit" %></li>
+	</ul>
+</div>
+
+<% end -%>

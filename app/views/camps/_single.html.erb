@@ -1,0 +1,60 @@
+<h1><%= @camp.name %>|<%= link_to "Vis alle", camps_path %>|<%= link_to 'Oppdater', edit_camp_path(@camp) %></h1>
+
+<p><%= @camp.description %></p>
+<p>Fra <%= @camp.age1 %>år til<%= @camp.age2%>år</p>
+<p><%= @camp.begin.strftime('%d.%m.%Y') %> - <%= @camp.end.strftime('%d.%m.%Y') %></p>
+<p>Offentlig: 
+	<% if @camp.public == true %>
+	Ja
+	<% else %>
+	Nei
+	<% end -%>
+</p>
+
+<p></p>
+<h3>Produkter</h3>
+<table class="tablesorter" cellspacing="0" cellpadding="0">
+	<thead>
+	<tr>
+		<th>Produkt</th>
+		<th>Pris</th>
+	</tr>
+	</thead>
+	<tbody> 
+	<% @camp.products.each do |product| %>
+	<tr>
+		<td><%= product.description %></td>
+		<td><%= number_to_currency(product.total_price )%></td>	
+	</tr>
+	<% end %>
+	<tr bordercolor="#000">
+		<td>Total</td>
+		<td><%= number_to_currency(@camp.products.sum(:total_price)) %></td>	
+	</tr>
+	<tbody>
+</table>
+
+
+<h3>Påmeldte: <%= @camp.registrations.count%> </h3>
+<table class="tablesorter" cellspacing="0" cellpadding="0">
+	<thead>
+	<tr>
+		<th>Navn</th>
+		<th>Alder</th>
+		
+	</tr>
+	</thead>
+	<tbody>
+<%@camp.registrations.each do |reg|%>
+<tr>
+		<td><%= reg.name %></td>
+		<td><%= reg.age %></td>
+		<td><%= link_to("Vis", registration_path(reg))%>
+			<%= link_to 'slett', reg, :confirm => 'Er du sikker?', :method => :delete %>
+		</td>
+			
+	</tr>
+<% end %>
+
+<tbody>
+</table>

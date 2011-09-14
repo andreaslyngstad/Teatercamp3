@@ -1,0 +1,29 @@
+<ul class="form_layout">	
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+  </div>
+  <% end %>
+  <li class="field">
+    <%= f.label :Beskrivelse %>
+    <%= f.text_field :description %>
+</li>
+  <li class="field">
+    <%= f.label :Pris_ink_mva %>
+    <%= f.text_field :total_price %>
+</li>
+  
+  <li class="field">
+    <%= f.label :Moms %>
+    <%= f.text_field :vat %>
+</li>
+ <li><label>&nbsp;</label><%= f.submit('Lagre',:class => 'submit') %></li>
+<% end %>
+</ul>	

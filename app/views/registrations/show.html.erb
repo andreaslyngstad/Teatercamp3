@@ -1,0 +1,12 @@
+<p><b>Navn: </b><%= @registration.name%></p>
+		<p><b>Alder: </b><%= @registration.age%></p>
+		
+		<p>Camp: <%= @registration.camp.name %> fra <%=h @registration.camp.begin.strftime('%d.%m.%Y') %> til <%=h @registration.camp.end.strftime('%d.%m.%Y') %></p>
+		<p><b>Om eleven</b></p>
+		<p><%= @registration.tell%></p>
+		<p><b>Medisinsk informasjon</b></p>
+		<p><%= @registration.medical%></p>
+
+<%= link_to 'Edit', edit_registration_path(@registration) %> |
+<%= link_to 'Påmeldinger', registrations_path %> | 
+<%= link_to 'Kontakter', contacts_path %>

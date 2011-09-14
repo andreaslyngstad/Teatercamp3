@@ -1,0 +1,10 @@
+
+<li>
+<%= link_to(page.name, view_page_path(page.name)) %>
+<%= link_to( 'opp', move_higher_page_path(page), :method => :post) %>
+<%= link_to( 'ned', move_lower_page_path(page), :method => :post) %>
+<%= link_to( 'oppdater', edit_page_path(page)) %>
+
+<% nested_set_list_for(page.children) unless page.children.empty? %>
+</li>
+

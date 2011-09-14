@@ -1,0 +1,28 @@
+
+<%= form_tag totals_path %>
+<%= datetime_select "year", :start_time, {:discard_hour => true,:discard_m => true,:discard_day => true, :discard_month => true, :start_year => 2011}%>
+<%= submit_tag "finn" %>
+
+<p><b><%= @time.strftime("%Y") %></b></p>
+<table border="0" cellspacing="10" cellpadding="10">
+
+	<tr>
+		<th>Total</th>
+		<th>Vat</th>
+		<th>Eks_vat</th>
+	</tr>
+	
+	<tr>
+		
+		<td style="text-align: right;"><%= number_to_currency(total(@invoices)[0]) %></td>
+		
+	
+		
+		<td style="text-align: right;"><%= number_to_currency(total(@invoices)[1]) %></td>	
+	
+		
+		<td style="text-align: right;"><%= number_to_currency(total(@invoices)[2]) %></td>	
+	</tr>
+
+</table>
+

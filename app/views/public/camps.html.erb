@@ -1,0 +1,43 @@
+<% @page_title = "Kurs"%>
+<%= render "nav" %>
+<div class="view_content">
+		
+
+
+<p>Trykk på linken "Meld meg på" ved det kurset du ønsker. Hvis kurset du vil melde deg på er fullt, kan du trykke på "Venteliste", så prøver vi å få plass til deg</p>
+		
+
+<table id="hor-minimalist-a" cellspacing="0" cellpadding="0">
+	<thead>
+	<tr>
+		<th>Navn</th>
+	    <th>Beskrivelse</th>
+	    <th>Alder</th>
+	    <th>Begynner</th>
+	    <th>Slutter</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody> 
+	<% @camps.each do |camp| %>
+
+	<tr id="<%=camp.id %>">
+	<% if params[:id] == camp.id.to_s%>
+	<tr id="<%= params[:id] %>" style="background:#999999">
+  		<% end %>
+	    <td ><%= link_to(camp.name, view_camp_path(camp)) %></td>
+	    <td><%= truncate(h(camp.description), :length => 80, :omission => "... mer")%></td>
+	     <td><%=h camp.age1 %> - <%=h camp.age2 %> år</td>
+	    <td><%=h camp.begin.strftime('%d.%m.%Y') %></td>
+	    <td><%=h camp.end.strftime('%d.%m.%Y') %></td>
+		<% if camp.registrations.count < camp.participants %> 
+	    <td><%= link_to("Meld deg på", new_registration_path(:id => camp) )%></td>
+	 	<% else %>
+		 <td><%= link_to("Venteliste", new_registration_path(:id => camp) )%></td>
+		<%end%>
+  	</tr>
+	
+<% end %>
+<tbody> 
+</table>
+</div>

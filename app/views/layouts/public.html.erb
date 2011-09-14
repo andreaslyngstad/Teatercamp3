@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<%= csrf_meta_tag %>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta name="title" content="<%= @app_name %>: <%= @page_title %>"/>
+  <meta name="keywords" content="<%= @meta_key %>" /> 
+  <meta name="description" content="<%= @meta_des %>" /> 
+
+  <title><%= @app_name %>: <%= @page_title %></title>
+  <%= stylesheet_link_tag "application" %>
+
+</head>
+<body>	
+	<div id="center">
+<div id="header">
+	<div id="header_wrapper" style="background:url(<%= asset_path "logo.png" %>) no-repeat;width:550px;height:200px;"> 
+		<%if logged_in?%>
+		<div id="logged_in">
+			<p style="font-family:courier new; color:white; font-size:12px">Hei <%= current_user.first_name %>! Du er innlogget.</p> 
+				<span style="font-family:courier new; color:white; font-size:15px"><%= link_to "Logg ut","/logout" %> | 
+				<%= link_to( "Til CMS", cms_path) %></span>
+		</div>		
+			<%end%>
+		
+	</div>
+</div>
+<div id="content">
+	<div id="content_wrapper">
+		<%= yield  %>
+		<div style="clear:both;"></div>
+	</div>
+</div>
+</div>
+<!-- start footer -->
+<div id="footer">
+	<div id="footer_wrapper">&#169; Teater|camp - t. 92056833 m. tiril@teatercamp.no</div>
+</div>
+</body>
+</html>

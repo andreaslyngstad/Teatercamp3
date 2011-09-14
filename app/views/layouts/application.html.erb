@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<%= csrf_meta_tag %>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		
+				<title><%= @app_name %>=> Admin<%= ": " + @page_title if @page_title%></title>
+				<meta name="keywords" content="" />
+<meta name="description" content="" />
+		<%= stylesheet_link_tag 'admin' , :media => "all" %>
+		<%=  javascript_include_tag "assets/application" %>
+		
+		
+	</head>
+	<BODY>
+<!-- start header -->
+
+		
+<div id="header">
+	<div id="header_wrapper">
+			<% if logged_in? %>
+			<div id="logged_in">
+				<p style="font-family:courier new; color:white; font-size:12px">Hei <%= current_user.first_name %>! Du er innlogget.</p> 
+				<span style="font-family:courier new; color:white; font-size:15px"><%= link_to "Logg ut","/logout" %> | 
+				<%= link_to( "Til siden", root_path) %>
+				</div>
+			<%end%>
+		<%= tabs %>
+		<%= subtabs %>
+	  
+	  </div>
+	</div>
+</div>
+<!-- end header -->
+<!-- start page -->
+	<div id="content">
+		<p><center>
+
+
+</center><p>
+	<div id="content_wrapper">
+		<br/><br/>
+		<div class="flash_notice">
+		<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, "_message"], :id => "notice_#{key}" %>
+    
+	<% end %>
+	</div>
+		<%= yield  %>		
+		<div style="clear:both;"></div>
+	</div>
+</div>
+<!-- end page -->
+</body>
+</html>
+
+			
+	

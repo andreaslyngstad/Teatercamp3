@@ -1,0 +1,45 @@
+<h1>Påmeldinger</h1>
+<form>
+    <input type="text" id="search">
+</form>
+<%= link_to "Eposter", emails_path %>
+<table class="tablesorter" cellspacing="0" cellpadding="0">
+	<thead>
+  <tr>
+  	<th class="header">Kurs</th>
+    <th class="header">Navn</th>
+    <th class="header">Alder</th>
+    <th class="header">Navn foresatt</th>
+    <th class="header">Telefon foresatt</th>
+	<th class="header">Navn fores. 2</th>
+    <th class="header">Telefon fores. 2</th>
+    <th class="header">Faktura epost</th>
+	<th></th>
+	
+  </tr>
+</thead>
+<tbody>
+<% @registrations.each do |registration| %>
+ <tr id="<%=registration.id %>">
+	<% if params[:id] == registration.id.to_s%>
+	<tr id="<%= params[:id] %>" style="background:#999999">
+  		<% end %>
+  	 <td><%=h registration.camp.name %></td>
+    <td><%=h registration.name %></td>
+    <td><%=h registration.age %></td>
+    <td><%=h registration.parent_one_name %></td>
+   
+    <td><%=h registration.parent_one_phone %></td>
+	 <td><%=h registration.parent_two_name %></td>
+    <td><%=h registration.parent_two_phone %></td>
+    <td><%=mail_to(registration.billing_email) %></td>
+  
+   
+    <td><%= link_to 'Vis', registration_path(registration) %>
+    	<%= link_to 'Oppdater', edit_registration_path(:id => registration) %>
+    	<%= link_to 'slett', registration, :confirm => 'Er du sikker?', :method => :delete %></td>
+  </tr>
+<% end %>
+<tbody> 
+</table>
+

@@ -1,0 +1,8 @@
+inv = $('#paid_' + <%= escape_javascript( @invoice.id.to_s)  %>)
+if ($(inv).html() == "Nei"){
+    	$(inv).html("Ja")
+    	}else{
+    	$(inv).html("Nei")
+   		};
+       $(inv).toggleClass("checked");
+$("#paid_spinning_" + <%= escape_javascript( @invoice.id.to_s)  %>).hide();
