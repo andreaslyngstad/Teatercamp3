@@ -9,7 +9,7 @@ set :deploy_to, "/var/www/#{application}"
 set :deploy_via, :remote_cache
 
 set :scm, :git
-set :repository, "git://github.com/andreaslyngstad/teatercamp.git"
+set :repository, "git://github.com/andreaslyngstad/Teatercamp3.git"
 set :branch, "master"
 
 
@@ -27,3 +27,4 @@ namespace :deploy do
   
 end
 after 'deploy:update_code', 'deploy:symlink_shared'
+after "deploy", "deploy:cleanup"
