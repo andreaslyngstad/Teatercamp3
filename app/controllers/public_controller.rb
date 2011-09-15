@@ -68,6 +68,8 @@ class PublicController < ApplicationController
   end
   
    def category
+     @option = Option.first
+    @parents = Page.roots
      @posts_til_liste = Post.eager_post
     @posts = Post.find(:all, :include => [:author, :categories], 
     :conditions => ["status = 'Offentlig' AND categories.id = ?", params[:id]], 
