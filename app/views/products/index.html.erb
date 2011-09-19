@@ -18,7 +18,7 @@
 	 <td><%= product.description %></td>
     <td><%= product.total_price %></td>
     <td><%= product.vat %></td>
-    <td><%= product.vat %></td>
+    <td><%= number_to_currency(product.eks_vat) %></td>
     <td><%= link_to 'Show', product %><%= link_to 'Edit', edit_product_path(product) %><%= link_to 'Destroy', product, :confirm => 'Er du sikker?', :method => :delete %></td>
   </tr>
 <% end %>
