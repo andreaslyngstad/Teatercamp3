@@ -1,5 +1,5 @@
 PDFKit.configure do |config|
-   config.wkhtmltopdf = 'c:/wkhtmltopdf/wkhtmltopdf.exe'
+   config.wkhtmltopdf = '/usr/local/bin/wkhtmltopdf'
    config.default_options = {
      :page_size => 'Legal',
      :print_media_type => true, 

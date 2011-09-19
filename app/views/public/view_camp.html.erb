@@ -1,9 +1,10 @@
 <%= render "nav" %>
 <div class="view_content">
 	<p> <%= link_to "Tilbake til alle kurs", view_camps_path%> </p>
-<b><%= @camp.name%></b><br /><br />
-		<b>Alder: <%=h @camp.age1 %> - <%=h @camp.age2 %></b><br /><br />
+		<p><b><%= @camp.name%></b></p>
+		<p><b>Alder: <%=h @camp.age1 %> - <%=h @camp.age2 %></b></p>
 		<p><b>Kurset går fra <%=h @camp.begin.strftime('%d.%m.%Y') %> til <%=h @camp.end.strftime('%d.%m.%Y') %></b></p>
+		<p><b>Pris: <%= number_to_currency(@camp.products.sum(:total_price)) %></b></p><br /><br />
 		<%= @camp.description%><br /><br />
 		<%= link_to("Meld deg på", new_registration_path(:id => @camp))%>
 		</div>
