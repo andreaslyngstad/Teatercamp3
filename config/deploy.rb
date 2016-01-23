@@ -13,7 +13,7 @@ set :deploy_via, :remote_cache
 
 set :scm, :git
 set :repository, "git://github.com/andreaslyngstad/Teatercamp3.git"
-set :branch, "Nytt_design_2016"
+set :branch, "2016"
 
 
 namespace :deploy do
