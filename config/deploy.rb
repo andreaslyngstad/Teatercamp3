@@ -3,15 +3,17 @@ set :application, "teatercamp.no"
 role :app, application
 role :web, application
 role :db,  application, :primary => true
-
-set :user, "teatercamp"
+set :default_environment, { 'PATH' => '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH' }
 set :use_sudo, false
-set :deploy_to, "/var/www/#{application}"
+set :user, "andreas"
+server '217.170.197.84',:web, :app,:db
+
+set :deploy_to, "/home/andreas/www/#{application}"
 set :deploy_via, :remote_cache
 
 set :scm, :git
 set :repository, "git://github.com/andreaslyngstad/Teatercamp3.git"
-set :branch, "master"
+set :branch, "Nytt_design_2016"
 
 
 namespace :deploy do

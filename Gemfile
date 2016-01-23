@@ -12,7 +12,7 @@ gem 'better_nested_set'
 gem "bcrypt-ruby", "~> 3.0.1", :require => "bcrypt"
 gem "paperclip", "~> 2.3"
 gem 'jquery-rails'
-gem "capistrano"
+gem "capistrano","~> 2.8"
 
 # Use unicorn as the web server
 # gem 'unicorn'
