@@ -5,7 +5,7 @@ gem 'rails', '3.0.10'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem "redcarpet"
-gem "pdfkit". '(0.5.2'
+gem "pdfkit",'0.5.2'
 gem 'sqlite3'
 gem 'tabulous', '1.0.2'
 gem 'better_nested_set'
