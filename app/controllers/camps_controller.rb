@@ -1,7 +1,7 @@
 class CampsController < ApplicationController
   # GET /camps
   # GET /camps.xml
-
+  layout "application"
     def index
     @camps = Camp.order("public DESC")
     if request.get? && !params[:id].blank?

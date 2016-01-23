@@ -1,4 +1,7 @@
 
+
+<div id="fullpage">
+	<div class="section" id="index">
 <div id="index_wr">
 <% tes = 3  %>
 <% @pages.roots.each do |page|  %>
@@ -8,14 +11,21 @@
 </div>
 <% end  %>
 
-<div style='background:url(..<%=@option.blogg_photo.to_s %>)' class="images item" id="image_1"><%= link_to "", view_blogg_path %>
+<div style='background:url(..<%=@option.blogg_photo.to_s %>)' class="images item" id="image_1"><%= link_to "", :anchor => 'blogs' %>
 	<div>Nyheter</div>
 </div>
 
-<div style='background:url(..<%=@option.camp_photo.to_s %>)' class="images item" id="image_2"><%= link_to "", view_camps_path %>
+<div style='background:url(..<%=@option.camp_photo.to_s %>)' class="images item" id="image_2"><%= link_to "", :anchor => 'camps' %>
 	<div>Kurs</div>
 </div>
 <p class="qoute item" id="quote1"><%= @option.quote1 %></p>
 <p class="qoute item" id="quote2"><%= @option.quote2 %></p>
 <p class="qoute item" id="quote3"><%= @option.quote3 %></p>
+</div>
+	</div>
+	<div class="section" id="camps">ww</div>
+	<div class="section" id="blogs">news</div>
+	<div class="section" id="teatercamp">teatercamp</div>
+	<div class="section" id="filmcamp">filmcamp</div>
+	<div class="section" id="news">nyheter</div>
 </div>

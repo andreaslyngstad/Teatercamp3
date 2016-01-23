@@ -13,7 +13,7 @@ jQuery.fn.submitWithAjax = function() {
 };
 
 jQuery.fn.send_invoice = function (){
-  this.live('click', function() { 
+  this.on('click', function() { 
     var invoice_id =  $(this).attr("data-id");
    
   $('#spinning_' + invoice_id).show();
@@ -21,17 +21,33 @@ jQuery.fn.send_invoice = function (){
     })
 };
 jQuery.fn.send_reminder = function (){
-  this.live('click', function() { 
+  this.on('click', function() { 
     
     var invoice_id =  $(this).attr("data-id");
     $('#spinning_' + invoice_id).show();
  	 $.getScript("/send_reminder/" + invoice_id)
     })
 };
+
+
+
 $(document).ready(function() {
+
+  $('#fullpage').fullpage({
+    //Navigation
+    sectionsColor: ['#2b1547', '#173414', '#194379', '#f46015'],
+        // anchors: ['index', 'kurs', 'news'],
+        menu: '#menu',
+        continuousVertical: true,
+        resize : false
+  });
 	$('input#search').quicksearch('table.tablesorter tbody tr', {
    
 	});
+  $('.square').click(function(){
+    var id = this.id
+    window.location.href = '/registrations/new?id=' + id;
+  })
 	$(".tablesorter").tablesorter(); 
 	$(".send_link").send_invoice();
 	$(".send_link_reminder").send_reminder();

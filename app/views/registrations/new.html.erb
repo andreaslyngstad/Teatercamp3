@@ -1,66 +1,75 @@
 <% @page_title = "påmelding" %>
-<%= render "public/nav" %>
-<div id="content_l">
-<h1>Påmelding <%= @registration.camp.name %></h1> 
-<h3>Fra <%=@registration.camp.begin.strftime('%d.%m.%Y')%> til <%=@registration.camp.end.strftime('%d.%m.%Y')%>. Fra <%=@registration.camp.age1%> til <%=@registration.camp.age2%> år</h3>
-<p></p>
-<p>* må fylles ut korrekt</p>
-<ul class="form_layout">
+<div class="new_camp">
+<div class="new_camp_bk_color">
+<div class='left'>
 
-<%= form_for(@registration) do |f| %>
+    <p> <%= link_to "Tilbake til alle kurs", root_path(anchor: 'kurs')%> </p>
+    <h1><%= @registration.camp.name %></h1> 
+<h3>Fra <%=@registration.camp.begin.strftime('%d.%m.%Y')%> til <%=@registration.camp.end.strftime('%d.%m.%Y')%>. Fra <%=@registration.camp.age1%> til <%=@registration.camp.age2%> år</h3>
+<p>Alder: <%=h @camp.age1 %> - <%=h @camp.age2 %></p>
+    <p>Kurset går fra <%=h @camp.begin.strftime('%d.%m.%Y') %> til <%=h @camp.end.strftime('%d.%m.%Y') %></p>
+    <p>Pris: <%= number_to_currency(@camp.products.sum(:total_price)) %></p>
+    <p><%= markdown(@camp.description)%></p>
+    <p>
+    <h3>Veiledning</h3>
+    <p>Det du fyller inn her blir kun tilgjengelig for oss på teater|camp</p>
+    <p>Vi foretrekker å spare både tid og miljøet ved å sende faktura på epost. I feltet "Faktura epost" vil vi ha epostaddressen til den som skal betale for oppholdet.</p>
+    <p>Det er fint for oss å vite litt om deg på før du kommer. I feltet "Fortell om deg selv" kan du fortell oss litt om dine interesser og talenter. Spiller du foreksempel et instrument?</p>
+    <p>Hvis det er det noe av medisinsk art, vi må vite om deg, skal du fylle det inn i feltet for "Medisinsk informasjon". Det kan være om du har allergier eller om du må ta medisiner.</p>
+    <p>Hvis du kommer på at du har gjort noe feil i påmeldingen etter at den er sendt, kan du ta kontakt på epost eller telefon.</p>
+    <p>Dersom vi må vite noe om du som er svært sensitivt, kan du godt ringe oss. Du finner telefonnumer og epost nederst på siden.</p>
+    </p>
+    </div>
+<div class='right'>
+    
+<p>* må fylles ut korrekt</p>
+
+<%= form_for(@registration, html:{class: "pure-form pure-form-stacked"}) do |f| %>
+<fieldset>
 <%= render "shared/error_message", :target => @registration %>
   <%= f.hidden_field :camp_id, :value => @camp.id%>
  
-	<% if @camp.age1 < 18 %>
+    <% if @camp.age1 < 18 %>
   
-    <li><%= f.label :Deltagerens_navn %>
-    <%= f.text_field :name, :required => true %>*</li>
-  	<li><%= f.label :Deltagerens_alder %>
-    <%= f.text_field :age, :required => true %>*</li>
-    <li><%= f.label :Foresatt_navn %>
-    <%= f.text_field :parent_one_name, :required => true %>*</li>
-	<li><%= f.label :Foresatt_telefon %>
-    <%= f.text_field :parent_one_phone, :required => true %>*</li>
-    <li><%= f.label "2.Foresatt navn" %>
-    <%= f.text_field :parent_two_name %></li>
-    <li><%= f.label "2.Foresatt tlf" %>
-    <%= f.text_field :parent_two_phone %></li>
-    <li><%= f.label :Faktura_epost %>
-    <%= f.text_field :billing_email, :required => true %>*</li>
-    <li><%= f.label "Fortell om deg selv" %>
-    <%= f.text_area :tell %></li>
-    <li><%= f.label "Medisinsk_informasjon"  %>
-    <%= f.text_area :medical %></li>
+    <div class="pure-control-group"><%= f.label 'Deltagerens navn *'%>
+    <%= f.text_field :name, :required => true %></div>
+    <div class="pure-control-group"><%= f.label 'Deltagerens alder *'%>
+    <%= f.text_field :age, :required => true %></div>
+    <div class="pure-control-group"><%= f.label 'Foresatt navn *' %>
+    <%= f.text_field :parent_one_name, :required => true %></div>
+    <div class="pure-control-group"><%= f.label 'Foresatt telefon *'%>
+    <%= f.text_field :parent_one_phone, :required => true %></div>
+    <div class="pure-control-group"><%= f.label "2.Foresatt navn" %>
+    <%= f.text_field :parent_two_name %></div>
+    <div class="pure-control-group">
+        <%= f.label "2.Foresatt tlf" %>
+        <%= f.text_field :parent_two_phone %>
+    </div>
+    <div class="pure-control-group"><%= f.label 'Faktura_epost *' %>
+    <%= f.text_field :billing_email, :required => true %></div>
+    <div class="pure-control-group"><%= f.label "Fortell om deg selv" %>
+    <%= f.text_area :tell %></div>
+    <div class="pure-control-group"><%= f.label "Medisinsk_informasjon"  %>
+    <%= f.text_area :medical %></div>
     <% else %>
-    <li><%= f.label :Deltagerens_navn %>
-    <%= f.text_field :name, :required => true %>*</li>
-    <li><%= f.label :Deltagerens_alder %>
-    <%= f.text_field :age, :required => true %>*</li>
-    <li><%= f.label :Telefon %>
-    <%= f.text_field :parent_one_phone, :required => true %>*</li>
-    <li><%= f.label :Faktura_epost %>
-    <%= f.text_field :billing_email, :required => true %>*</li>
-     <li><%= f.label "Fortell om deg selv" %>
-    <%= f.text_area :tell %></li>
-    <li><%= f.label "Medisinsk_informasjon"  %>
-    <%= f.text_area :medical %></li>
+    <div class="pure-control-group"><%= f.label 'Deltagerens navn *'%>
+    <%= f.text_field :name, :required => true %></div>
+    <div class="pure-control-group"><%= f.label 'Deltagerens alder *' %>
+    <%= f.text_field :age, :required => true %></div>
+    <div class="pure-control-group"><%= f.label 'Telefon *' %>
+    <%= f.text_field :parent_one_phone, :required => true %></div>
+    <div class="pure-control-group"><%= f.label 'Faktura_epost *' %>
+    <%= f.text_field :billing_email, :required => true %></div>
+     <div class="pure-control-group"><%= f.label "Fortell om deg selv" %>
+    <%= f.text_area :tell %></div>
+    <div class="pure-control-group"><%= f.label "Medisinsk_informasjon"  %>
+    <%= f.text_area :medical %></div>
     <% end -%>
-	<li><label>&nbsp;</label><%= f.submit "Send påmelding", :class => 'submit' %></li>
-</ul>
+    <div class="pure-controls"><%= f.submit "Send påmelding", :class => 'pure-button pure-button-primary' %></div>
+  </fieldset>
 <% end %>
-
 </div>
 
-<div id="content_r">
-	
-	<br /><br />
-	<h3>Veiledning</h3>
-	<p>Det du fyller inn her blir kun tilgjengelig for oss på teater|camp</p>
-	<p>Vi foretrekker å spare både tid og miljøet ved å sende faktura på epost. I feltet "Faktura epost" vil vi ha epostaddressen til den som skal betale for oppholdet.</p>
-	<p>Det er fint for oss å vite litt om deg på før du kommer. I feltet "Fortell om deg selv" kan du fortell oss litt om dine interesser og talenter. Spiller du foreksempel et instrument?</p>
-	<p>Hvis det er det noe av medisinsk art, vi må vite om deg, skal du fylle det inn i feltet for "Medisinsk informasjon". Det kan være om du har allergier eller om du må ta medisiner.</p>
-	<p>Hvis du kommer på at du har gjort noe feil i påmeldingen etter at den er sendt, kan du ta kontakt på epost eller telefon.</p>
-	<p>Dersom vi må vite noe om du som er svært sensitivt, kan du godt ringe oss. Du finner telefonnumer og epost nederst på siden.</p>
-	
-</div>
 
+</div>
+</div>

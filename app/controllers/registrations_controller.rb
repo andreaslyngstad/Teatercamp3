@@ -2,12 +2,10 @@ class RegistrationsController < ApplicationController
   skip_before_filter :login_required?, :only => [ :new, :create, :thank_you]
   # GET /registrations
   # GET /registrations.xml
+
   def index
     @camps = Camp.where(:public => true)
-    
-    
     @registrations = Registration.order("created_at ASC").where(:camp_id => @camps)
-    
     @registration = Registration.find(params[:id]) unless params[:id].blank?
     respond_to do |format|
       format.html # index.html.erb
@@ -29,12 +27,13 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new
   # GET /registrations/new.xml
   def new
+    @camps = Camp.where(:public => true)
+    @pages = Page.order("lft")
     @option = Option.first
-    @parents = Page.roots
     @registration = Registration.new
     @camp = Camp.find(params[:id])
     @registration.camp =  @camp
-    render :action => "new", :layout => "public"
+    render :action => "new", :layout => "camps"
    
   end
 
@@ -47,9 +46,8 @@ class RegistrationsController < ApplicationController
   # POST /registrations.xml
   def create
     @option = Option.first
-    @parents = Page.roots
     @registration = Registration.new(params[:registration])
-    
+     @pages = Page.order("lft")
     @camp = @registration.camp
     @registration.paid = false
     respond_to do |format|
@@ -63,9 +61,9 @@ class RegistrationsController < ApplicationController
             @invoice.sent = false
             @invoice.save
             flash[:notice] = 'Påmeldingen er registrert.'
-            render(:controller => "registrations", :action => "thank_you", :layout => "public" ) 
+            render(:controller => "registrations", :action => "thank_you", :layout => "camps" ) 
           else
-            render :action => "new", :layout => "public"
+            render :action => "new", :layout => "camps"
           end
         
           

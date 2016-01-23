@@ -1,52 +1,32 @@
 <% @page_title = "Påmeldingen er registret" %>
-<%= render "public/nav" %>
-<p>Takk for registreringen. Dette skrev du. Ta kontakt hvis noe i registreringen er feil. </p>
-<table border="0" cellspacing="10" cellpadding="10">
-	<tr>
-		<td>Navn:</td>
-		<td><%=h @registration.name %></td>	
-	</tr>
-	<tr>
-		<td>Alder:</td>
-		<td><%=h @registration.age %></td>	
-	</tr>
-	<% if @registration.camp.age1 < 18 %>
-	<tr>
-		<td>Foresatt navn:</td>
-		<td><%=h @registration.parent_one_name %></td>	
-	</tr>
-	<tr>
-		<td>Foresatt telefon:</td>
-		<td><%=h @registration.parent_one_phone %></td>	
-	</tr>
-	<tr>
-		<td>2.foresatt navn:</td>
-		<td><%=h @registration.parent_two_name %></td>	
-	</tr>
-	<tr>
-		<td>2.foresatt telefon:</td>
-		<td><%=h @registration.parent_two_phone %></td>	
-	</tr>
-	<% else %>
-	<tr>
-		<td>Telefon:</td>
-		<td><%=h @registration.parent_one_phone %></td>	
-	</tr>
-	<% end %>
-	<tr>
-		<td>Faktura epost:</td>
-		<td><%=h @registration.billing_email %></td>	
-	</tr>
-	<tr>
-		<td>Fortell om deg selv:</td>
-		<td><%=h @registration.tell %></td>	
-	</tr>
-	<tr>
-		<td>Medisinsk informasjon:</td>
-		<td><%=h @registration.medical %></td>	
-	</tr>
+<div class="thanks">
+<div class="thanks_bk_color">
+<div class='left'>
+	<h2>Tusen takk for påmeldingen!</h2>
 	
-</table>
-<p>Vi kommer til å ta kontakt og gi mer informasjon. Gleder oss til å treffe deg.</p>
+		Navn: <%=h @registration.name %> <br/>	
+		Alder: <%=h @registration.age %><br/>
+	<% if @registration.camp.age1 < 18 %>
+		Foresatt navn: <%=h @registration.parent_one_name %><br/>
+		Foresatt telefon: <%=h @registration.parent_one_phone %><br/>
+		2.foresatt navn: <%=h @registration.parent_two_name %><br/>
+		2.foresatt telefon: <%=h @registration.parent_two_phone %><br/>
+	<% else %>
+		Telefon: <%=h @registration.parent_one_phone %><br/>
+	<% end %>
+		Faktura epost: <%=h @registration.billing_email %><br/>	
+		Fortell om deg selv: <%=h @registration.tell %><br/>
+ 		Medisinsk informasjon: <%=h @registration.medical %>	<br/>
+	
+	
+
+<p>Vi tar kontakt og gir mer informasjon.</p> 
+<p>Vi gleder oss til å treffe deg!</p>
+</div>
+<div class='right'>    
+
+</div>
 
 
+</div>
+</div>

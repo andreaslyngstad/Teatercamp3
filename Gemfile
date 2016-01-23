@@ -14,9 +14,6 @@ gem "paperclip", "~> 2.3"
 gem 'jquery-rails'
 gem "capistrano"
 
-
-
-gem 'jquery-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -6,8 +6,15 @@ class PublicController < ApplicationController
   layout "public"
   
   def index 
+    @posts = Post.search(params[:search])
+    @parents = Page.roots
     @pages = Page.order("lft")
     @option = Option.first
+    @camps = Camp.where(:public => true)
+     if params[:id]
+     @camp = Camp.find(params[:id])
+     end
+
   end
   
   def start
@@ -52,8 +59,6 @@ class PublicController < ApplicationController
     @posts_til_liste = Post.eager_post
     @comment = Comment.new(params[:comment])
     @post = Post.find(params[:id])
-    
-    
     @comment.post = @post
     @comment.status = "nye"
     if @comment.save
@@ -86,10 +91,12 @@ class PublicController < ApplicationController
      @camp = Camp.find(params[:id])
      end
    end
-  def view_camp
+  def view_camp  
+    @pages = Page.order("lft")
     @parents = Page.roots
     @option = Option.first
     @camp = Camp.find(params[:id])
+    render(:layout => 'camps')
   end
   
 end
