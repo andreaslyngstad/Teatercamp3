@@ -29,7 +29,6 @@ GEM
       activesupport (= 3.0.10)
     activesupport (3.0.10)
     arel (2.0.10)
-    bcrypt (3.1.10)
     better_nested_set (0.1.1)
     builder (2.1.2)
     capistrano (3.4.0)
@@ -107,7 +106,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt
   better_nested_set
   capistrano
   capistrano-bundler
