@@ -9,7 +9,7 @@ gem "pdfkit",'0.5.2'
 gem 'sqlite3'
 gem 'tabulous', '1.0.2'
 gem 'better_nested_set'
-gem "bcrypt-ruby", "~> 3.0.1", :require => "bcrypt"
+# gem "bcrypt-ruby", "~> 3.0.1", :require => "bcrypt"
 gem "paperclip", "~> 2.3"
 gem 'jquery-rails'
 gem "capistrano","~> 2.8"

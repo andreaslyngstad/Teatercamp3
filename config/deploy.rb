@@ -5,16 +5,16 @@ role :web, application
 role :db,  application, :primary => true
 set :default_environment, { 'PATH' => '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH' }
 set :use_sudo, false
-set :user, "andreas"
-server '217.170.197.84',:web, :app,:db
+set :user, 'teatercamp'
 
-set :deploy_to, "/home/andreas/www/#{application}"
+
+set :deploy_to, "/var/www/vhosts/teatercamp.no/httpdocs/teatercamp.no"
 set :deploy_via, :remote_cache
-
+default_run_options[:pty] = true
 set :scm, :git
 set :repository, "git://github.com/andreaslyngstad/Teatercamp3.git"
 set :branch, "2016"
-
+set :bundle_path, '/var/www/vhosts/teatercamp.no/httpdocs/teatercamp.no/gems'
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
