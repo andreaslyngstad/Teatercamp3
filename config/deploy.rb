@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:andreaslyngstad/Teatercamp3.git'
 
 
 # Default branch is :master
-ask :branch, '2016'
+set :branch, '2016'
 
 # Default deploy_to directory is /var/www/my_app_name
 
@@ -42,7 +42,7 @@ namespace :deploy do
   task :symlink_shared do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end 
-end
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -53,4 +53,3 @@ end
   end
 
 end
-after 'deploy:update_code', 'deploy:symlink_shared'
