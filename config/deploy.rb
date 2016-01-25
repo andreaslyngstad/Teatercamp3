@@ -55,5 +55,5 @@ namespace :deploy do
       # end
     end
   end
-  after 'deploy:bundle', 'deploy:symlink_shared'
+  after 'deploy:updated', 'deploy:symlink_shared'
 end
