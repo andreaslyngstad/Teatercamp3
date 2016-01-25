@@ -18,6 +18,10 @@ gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-passenger'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'test-unit'
+end
 # Use unicorn as the web server
 # gem 'unicorn'
 

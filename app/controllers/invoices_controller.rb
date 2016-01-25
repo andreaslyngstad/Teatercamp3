@@ -2,7 +2,7 @@ class InvoicesController < ApplicationController
   layout :resolve_layout
   
   def index
-    @invoices = Invoice.includes([:registration, {:registration => [{:camp=> [:products]}]}])
+    @invoices = Invoice.includes([:registration, :credit_note, {:registration => [{:camp=> [:products]}]}])
 
     respond_to do |format|
       format.html # index.html.erb

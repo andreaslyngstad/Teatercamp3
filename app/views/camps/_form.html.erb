@@ -4,6 +4,16 @@
 <%= f.text_field :name %>
 </li>
 
+<li>
+<%= label_tag 'Ingress' %>
+<%= f.text_area :ingress %>
+</li>
+
+<li>
+<%= label_tag 'Beskrivelse' %>
+<%= f.text_area :description %>
+</li>
+
 
 <li>
 <%= label_tag 'Alder fra - til' %>
@@ -38,9 +48,6 @@
 <%= label_tag 'Offentlig' %>
 <%= f.select :public,  [['Ja', true], ['Nei', false], ] %>
 </li>
-<li>
-<%= label_tag 'Beskrivelse' %>
-<%= f.text_area :description %>
-</li>
+
 
 

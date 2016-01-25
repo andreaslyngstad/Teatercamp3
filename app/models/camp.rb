@@ -1,6 +1,7 @@
 class Camp < ActiveRecord::Base
   has_many :registrations
   validates_presence_of :name, :description, :age1, :age2, :begin, :end
+  validates_length_of :ingress, :maximum => 440, :allow_blank => true
   has_many :pricings
   has_many :products, :through => :pricings
    def total_eks_vat

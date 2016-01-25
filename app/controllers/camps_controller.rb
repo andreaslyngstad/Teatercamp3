@@ -38,6 +38,7 @@ class CampsController < ApplicationController
   def show
     @camp = Camp.find(params[:id])
     @camps = Camp.find(:all)
+
     respond_to do |format|
       format.html { render :action => "show" }
       format.xml  { render :xml => @camp }
@@ -48,20 +49,23 @@ class CampsController < ApplicationController
   def create
     @camp = Camp.new(params[:camp])
     @camps = Camp.all
+    @products = Product.all
     respond_to do |format|
       if @camp.save
         flash[:notice] = 'Kurset ble laget.'
         format.html { redirect_to(camps_path) }
         format.xml  { render :xml => @camp, :status => :created, :location => @camp }
       else
-        format.html { render :action => "index" }
+        format.html { render :action => "new" }
         format.xml  { render :xml => @camp.errors, :status => :unprocessable_entity }
       end
     end
   end
  def update
    @camp = Camp.find(params[:id]) 
+   @products = Product.all
     params[:camp][:product_ids] ||= []
+
     respond_to do |format|
       if @camp.update_attributes(params[:camp])
         
