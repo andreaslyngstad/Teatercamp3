@@ -1,7 +1,7 @@
 db/*.sqlite3
-
+config/database.yml
 log/*.log
-
+config/email.yml
 tmp/
 
 vendor/bundle/
