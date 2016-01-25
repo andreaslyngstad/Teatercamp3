@@ -15,7 +15,7 @@ module PagesHelper
         concat(link_to ' | Opp', move_higher_page_path(page), :method => :get)
         concat(link_to ' ned', move_lower_page_path(page), :method => :get )
         concat(link_to ' oppdater', edit_page_path(page))
-        concat(link_to ' slett', page, :confirm => "Vil du slette denne siden og alle sidene under den?", :method => :delete)
+        concat(button_to ' slett', page, :confirm => "Vil du slette denne siden og alle sidene under den?", :method => :delete)
       end
       )
       concat(nested_set_list_for(page.children)) unless page.children.empty?
