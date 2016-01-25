@@ -5,8 +5,8 @@
 	<h1><%= @post.title %></h1>
 	
 		Av: <%= @post.author.full_name %>, <em><%= @post.created_at.strftime("%d. %B %Y") %>.</em>	
-	<p><b><%= markdown(@post.lead) %></b></p>	
-	<p><%= markdown(@post.content) %></p>	
+	<p><b><%= raw(@post.lead) %></b></p>	
+	<p><%= raw(@post.content) %></p>	
 		
 
 	<% if @post.comments_count != 0%>

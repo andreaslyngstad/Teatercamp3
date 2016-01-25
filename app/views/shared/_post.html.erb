@@ -7,7 +7,7 @@
 			<em><%= post.categories.collect {|cat| cat.name if !cat.nil?}.to_sentence%></em>
 
 		</div>
-		<p><%= markdown(post.lead) %></p>
+		<p><%= raw(post.lead) %></p>
 		<% if post.approved_comments.size != 0 -%>
 		<p>
 		<strong><%= link_to(('Antall kommentarer:' + " " + (post.approved_comments.size.to_s) ), :action => 'view_post', :id => post.id, :anchor => 'comments')%></strong>

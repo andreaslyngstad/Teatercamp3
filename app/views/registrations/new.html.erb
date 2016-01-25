@@ -9,7 +9,7 @@
 <p>Alder: <%=h @camp.age1 %> - <%=h @camp.age2 %></p>
     <p>Kurset går fra <%=h @camp.begin.strftime('%d.%m.%Y') %> til <%=h @camp.end.strftime('%d.%m.%Y') %></p>
     <p>Pris: <%= number_to_currency(@camp.products.sum(:total_price)) %></p>
-    <p><%= markdown(@camp.description)%></p>
+    <p><%= raw(@camp.description)%></p>
     <p>
     <h3>Veiledning</h3>
     <p>Det du fyller inn her blir kun tilgjengelig for oss på teater|camp</p>

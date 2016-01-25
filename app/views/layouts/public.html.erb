@@ -47,7 +47,7 @@
 		<% @pages.each do |page| %>
 		<% x = x + 1 %>
 		<div class="section" id="section<%= x %>" data-anchor="<%= page.title %>">
-		 <%= markdown(page.body )%>
+		 <%= raw(page.body) %>
 		</div>
 	<% end %>
 		
