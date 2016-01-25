@@ -55,5 +55,5 @@ namespace :deploy do
       # end
     end
   end
-
+  before 'deploy:finishing', 'deploy:symlink_shared'
 end
