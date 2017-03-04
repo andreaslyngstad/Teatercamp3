@@ -8,7 +8,7 @@ class PublicController < ApplicationController
   def index 
     @posts = Post.search(params[:search])
     @parents = Page.roots
-    @pages = Page.where(name:[ 'Teater|camp', 'Film|camp', 'Om oss'])
+    @pages = Page.where(name:[ 'Teater|camp', 'Film|camp', 'Om oss']).order("lft")
     @option = Option.first
     @camps = Camp.where(:public => true)
      if params[:id]
