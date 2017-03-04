@@ -30,10 +30,10 @@
 
 <ul id="menu">
 	<% @parents.each do |page| %>
-	<li data-menuanchor="<%= page.title %>"><a href="#<%= page.title %>"><%= page.name %></a></li>
+	<li data-menuanchor="<%= page.title %>"><a href="<%= root_url %>#<%= page.title %>"><%= page.name %></a></li>
 <% end %>
-	<li data-menuanchor="kurs" class="active"><a href="#kurs">Kurs</a></li>
-	<li data-menuanchor="news"><a href="#news">Nyheter</a></li>
+	<li data-menuanchor="kurs" class="active"><a href="<%= root_url %>#kurs">Kurs</a></li>
+	<li data-menuanchor="news"><a href="<%= root_url %>#news">Nyheter</a></li>
 	<%if logged_in?%>
 		<li><%= link_to "Logg ut","/logout" %></li> 
 		<li><%= link_to( "Til CMS", cms_path) %></li> 
@@ -42,53 +42,7 @@
 		
 </ul>
 <div class="fb-follow" data-href="https://www.facebook.com/teatercamp" data-layout="button_count" data-show-faces="true"></div>
-<div id="fullpage">
-	<% x = 0 %>
-		<% @pages.each do |page| %>
-		<% x = x + 1 %>
-		<div class="section" id="section<%= x %>" data-anchor="<%= page.title %>">
-		 <%= raw(page.body) %>
-		</div>
-	<% end %>
-		
-	<div class="section" id="section5" data-anchor="kurs">
-		<% @camps.each do |camp| %>
-		<div class="square" id="<%= camp.id %>">
-	    <div class="content">
-	        <div class="table">
-	          <div class="table-cell">
-	            <h2><%= camp.name %></h2>
-	            <%=h camp.begin.strftime('%d.%m.%Y') %> - 
-	            <%=h camp.end.strftime('%d.%m.%Y') %><br/>
-	            Alder <%=h camp.age1 %> - <%=h camp.age2 %> år<br/>
-	            <%= raw(camp.ingress)%>
-	            <%= number_to_currency(camp.products.sum(:total_price)) %>
-	      <!--       <% if camp.registrations.count < camp.participants %> 
-		    				<%= link_to("Meld deg på", new_registration_path(:id => camp) )%>
-		 					<% else %>
-					 			<%= link_to("Venteliste", new_registration_path(:id => camp) )%>
-							<%end%> -->
-	          </div>
-	        </div>
-	    </div>
-	</div>
-		
-	<% end %>
-	</div>
-	<div class="section" id="section<%= x + 2%>"  data-anchor="news">
-
-	<% for post in @posts %>
-    <div class="slide">
-    	<div class='inside_slider'>
-        <h2><%=post.title %></h2>
-        <p><%= raw post.lead %></p>
-        <p><%= raw post.content %></p>
-        <p style="font-size: 70%">Publisert <%= post.updated_at.strftime('%d.%m.%y')  %></p>
-
-      </div>
-	</div>
-    <% end %>
-</div>
+<%= yield %>
 <!-- start footer -->
 <!-- <div id="footer">
 	<div id="footer_wrapper">&#169; Teater|camp - t. 92056833 m. tiril@teatercamp.no</div>

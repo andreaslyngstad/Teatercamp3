@@ -2,7 +2,7 @@ PDFKit.configure do |config|
   config.wkhtmltopdf = '/usr/local/bin/wkhtmltopdf'
   #config.wkhtmltopdf = 'c:/wkhtmltopdf/wkhtmltopdf.exe'
    config.default_options = {
-     :page_size => 'Legal',
+     :page_size => 'legal',
      :print_media_type => true, 
     :disable_smart_shrinking => true,
     :margin_left => "0mm", 

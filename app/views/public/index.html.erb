@@ -1,31 +1,48 @@
-
-
 <div id="fullpage">
-	<div class="section" id="index">
-<div id="index_wr">
-<% tes = 3  %>
-<% @pages.roots.each do |page|  %>
-<div style='background:url(..<%=page.nav_photo.to_s %>) no-repeat;' class="images item" id="image_<%= tes += 1%>" >
-	<%= link_to( "", view_page_path(page.name)) %>	
-	<div><%= page.navlabel %></div>
-</div>
-<% end  %>
-
-<div style='background:url(..<%=@option.blogg_photo.to_s %>)' class="images item" id="image_1"><%= link_to "", :anchor => 'blogs' %>
-	<div>Nyheter</div>
-</div>
-
-<div style='background:url(..<%=@option.camp_photo.to_s %>)' class="images item" id="image_2"><%= link_to "", :anchor => 'camps' %>
-	<div>Kurs</div>
-</div>
-<p class="qoute item" id="quote1"><%= @option.quote1 %></p>
-<p class="qoute item" id="quote2"><%= @option.quote2 %></p>
-<p class="qoute item" id="quote3"><%= @option.quote3 %></p>
-</div>
+	<% x = 0 %>
+		<% @pages.each do |page| %>
+		<% x = x + 1 %>
+		<div class="section" id="section<%= x %>" data-anchor="<%= page.title %>">
+		 <%= raw(page.body) %>
+		</div>
+	<% end %>
+		
+	<div class="section" id="section<%= x + 1%>" data-anchor="kurs">
+		<% @camps.each do |camp| %>
+		<div class="square" id="<%= camp.id %>">
+	    <div class="content">
+	        <div class="table">
+	          <div class="table-cell" style="vertical-align: middle;">
+	            <h3><%= camp.name %></h3>
+	            <%=h camp.begin.strftime('%d.%m.%Y') %> - 
+	            <%=h camp.end.strftime('%d.%m.%Y') %><br/>
+	            Alder <%=h camp.age1 %> - <%=h camp.age2 %> år<br/>
+	         <!--     <%= raw(camp.ingress)%>
+	            <%= number_to_currency(camp.products.sum(:total_price)) %>-->
+	      <!--       <% if camp.registrations.count < camp.participants %> 
+		    				<%= link_to("Meld deg på", new_registration_path(:id => camp) )%>
+		 					<% else %>
+					 			<%= link_to("Venteliste", new_registration_path(:id => camp) )%>
+							<%end%> -->
+	          </div>
+	        </div>
+	    </div>
 	</div>
-	<div class="section" id="camps">ww</div>
-	<div class="section" id="blogs">news</div>
-	<div class="section" id="teatercamp">teatercamp</div>
-	<div class="section" id="filmcamp">filmcamp</div>
-	<div class="section" id="news">nyheter</div>
+		
+	<% end %>
+	</div>
+	<div class="section" id="section<%= x + 2%>"  data-anchor="news">
+
+	<% for post in @posts %>
+    <div class="slide">
+    	<div class='inside_slider'>
+        <h2><%=post.title %></h2>
+        <p><%= raw post.lead %></p>
+        <p><%= raw post.content %></p>
+        <p style="font-size: 70%">Publisert <%= post.updated_at.strftime('%d.%m.%y')  %></p>
+
+      </div>
+	</div>
+    <% end %>
+</div>
 </div>
