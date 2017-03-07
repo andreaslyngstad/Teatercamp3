@@ -35,7 +35,7 @@ $(document).ready(function() {
 
   $('#fullpage').fullpage({
     //Navigation
-    sectionsColor: ['#2b1547', '#173414', '#194379', '#f46015'],
+    sectionsColor: ['#2b1547', '#173414', '#194379', '#f46015', '#2b1547', '#173414', '#194379', '#f46015'],
         // anchors: ['index', 'kurs', 'news'],
         menu: '#menu',
         continuousVertical: true,
