@@ -33,7 +33,7 @@ h3{
 	font-weight: 300;
     letter-spacing: 0;
     line-height: 1.4;
-	font-size:40px;
+	font-size:120%;
 }
 textarea {
     width: 90%;
@@ -55,7 +55,42 @@ h1{border-bottom: 1px solid #641778;}
         
 }
 
-@media screen and (min-width: 700px){
+@media handheld, (min-width: 650px), (orientation: landscape) {
+
+	#fullpage{font-size: 150%;}
+	.left{
+	padding-top: 2%;
+	padding-bottom: 3%;
+	padding-right: 1%;
+	padding-left:5%;
+	
+	width: 44%;		
+	display: inline-block;
+	text-align: left;
+	float:left;
+	
+}
+.right{ 
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+	padding-top: 2%;
+	padding-bottom: 3%;
+	padding-right: 5%;
+	padding-left:3%;
+	display: inline-block;
+	padding-right: 3%;
+	width: 41%;
+	
+	text-align: left;
+		float:left;
+  
+}
+}
+
+
+
+@media screen and (min-width: 700px) {
 	#fullpage{font-size: 150%;}
 	.left{
 	padding-top: 2%;
