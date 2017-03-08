@@ -55,38 +55,7 @@ h1{border-bottom: 1px solid #641778;}
         
 }
 
-@media handheld, (min-width: 650px), (orientation: landscape) {
 
-	#fullpage{font-size: 150%;}
-	.left{
-	padding-top: 2%;
-	padding-bottom: 3%;
-	padding-right: 1%;
-	padding-left:5%;
-	
-	width: 44%;		
-	display: inline-block;
-	text-align: left;
-	float:left;
-	
-}
-.right{ 
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  line-height: 1.4;
-	padding-top: 2%;
-	padding-bottom: 3%;
-	padding-right: 5%;
-	padding-left:3%;
-	display: inline-block;
-	padding-right: 3%;
-	width: 41%;
-	
-	text-align: left;
-		float:left;
-  
-}
-}
 
 
 
@@ -120,6 +89,38 @@ h1{border-bottom: 1px solid #641778;}
 		float:left;
   
 }}
+@media screen and (max-height:400px) {
+
+	#fullpage{font-size: 120%;}
+	.left{
+	padding-top: 2%;
+	padding-bottom: 3%;
+	padding-right: 1%;
+	padding-left:5%;
+	
+	width: 90%;		
+	display: inline-block;
+	text-align: left;
+	float:left;
+	
+}
+.right{ 
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+	padding-top: 2%;
+	padding-bottom: 3%;
+	padding-right: 5%;
+	padding-left:3%;
+	display: inline-block;
+	padding-right: 3%;
+	width: 90%;
+	
+	text-align: left;
+		float:left;
+  
+}
+}
 @media screen and (max-width: 700px){
 	#fullpage{font-size: 70%;}
 	.left{
@@ -148,6 +149,7 @@ h1{border-bottom: 1px solid #641778;}
 	width: 90%;
 	float:right;
 	text-align: left;
+
 		
 	}
 }
@@ -164,13 +166,14 @@ h1{border-bottom: 1px solid #641778;}
 
 
 #section1{
+
 	background: url("/images/public.jpg") 50% 50% / cover;
 }
 #section2{
 	background: url("/images/filmcamp.jpg") 50% 50% / cover;
 }
 #section3{
-	background: url("/images/oss.jpg") 50% 50% / cover;
+	background: url("/system/photos/16/original/oss.jpg?1488981648") 50% 50% / cover;
 }
 #section4{
 	background: url("/images/kurs.jpg") 50% 50% / cover;
