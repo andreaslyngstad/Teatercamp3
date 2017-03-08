@@ -15,7 +15,7 @@ a:hover							{color:#aaa;}
 p								{padding:5px 0px 5px 0px;}
 h1, h2{
 	   color: #fff;
-     font-size: 60px;
+     font-size: 150%;
     font-style: italic;
     font-variant-ligatures: common-ligatures;
     font-weight: 300;
@@ -25,7 +25,7 @@ h1, h2{
 /*font-family: FranklinGothicFSMedium, Helvetica Neue, Helvetica, Arial, sans serif !important;*/
 }
 h2{
-	font-size: 30px;
+	font-size: 120%;
 
 
 }
@@ -56,12 +56,13 @@ h1{border-bottom: 1px solid #641778;}
 }
 
 @media screen and (min-width: 700px){
+	#fullpage{font-size: 150%;}
 	.left{
 	padding-top: 2%;
 	padding-bottom: 3%;
 	padding-right: 1%;
 	padding-left:5%;
-	font-size: 150%;
+	
 	width: 44%;		
 	display: inline-block;
 	text-align: left;
@@ -69,7 +70,6 @@ h1{border-bottom: 1px solid #641778;}
 	
 }
 .right{ 
-	   font-size: 20px;
   font-weight: 300;
   letter-spacing: 0.5px;
   line-height: 1.4;
@@ -86,13 +86,14 @@ h1{border-bottom: 1px solid #641778;}
   
 }}
 @media screen and (max-width: 700px){
+	#fullpage{font-size: 70%;}
 	.left{
 	
 	padding-top: 2%;
 	padding-bottom: 3%;
 	padding-right: 5%;
 	padding-left:5%;
-	font-size: 150%;
+	
 	width: 90%;		
 	display: inline-block;
 	text-align: left;
@@ -100,7 +101,7 @@ h1{border-bottom: 1px solid #641778;}
 	
 }
 	.right{
-	font-size: 20px;
+	
   font-weight: 300;
   letter-spacing: 0.5px;
   line-height: 1.4;
