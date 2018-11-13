@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   layout :resolve_layout
-  
+
   def index
     @invoices = Invoice.includes([:registration, :credit_note, {:registration => [{:camp=> [:products]}]}])
 
@@ -9,7 +9,7 @@ class InvoicesController < ApplicationController
       format.xml  { render :xml => @invoices }
     end
   end
-  
+
   def show
     @invoice = Invoice.find(params[:id])
 
@@ -18,16 +18,23 @@ class InvoicesController < ApplicationController
       format.xml  { render :xml => @invoice }
     end
   end
-  def show_pdf
-   
-    @invoice = Invoice.find(params[:id])
 
+  def show_pdf
+    @invoice = Invoice.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @invoice }
     end
   end
-  
+
+  def download_pdf
+	  @invoice = Invoice.find(params[:id])
+	  html = render_to_string(template: 'invoices/show_pdf/', locals: {invoice: @invoice })
+	  pdf = PDFKit.new(html)
+	  send_data(pdf.to_pdf, :filename => "faktura_#{@invoice.number}.pdf", :type => 'application/pdf')
+	end
+
+
   def create
     @invoice = Invoice.new(params[:Invoice])
 
@@ -41,7 +48,7 @@ class InvoicesController < ApplicationController
       end
     end
   end
-  
+
   def invoice_send
     @invoice = Invoice.find(params[:id])
     @invoice.made_date = Time.now
@@ -50,18 +57,18 @@ class InvoicesController < ApplicationController
     @invoice.save
      respond_to do |wants|
        if InvoiceMailer.send_invoice(@invoice).deliver
-       wants.js 
+       wants.js
      end
      end
   end
-  
+
   def reminder_send
     @invoice = Invoice.find(params[:id])
     @invoice.reminder_date = Time.now
     @invoice.save
     respond_to do |wants|
        if InvoiceMailer.send_reminder(@invoice).deliver
-       wants.js 
+       wants.js
      end
      end
   end
@@ -74,8 +81,8 @@ class InvoicesController < ApplicationController
     end
     respond_to do |format|
       if @invoice.save
-        format.js 
-        
+        format.js
+
       else
         format.html { render :action => "index" }
         format.xml  { render :xml => @invoice.errors, :status => :unprocessable_entity }
@@ -99,12 +106,28 @@ class InvoicesController < ApplicationController
     @time = start_time
     @invoices = Invoice.where(:paid => true, :made_date => start_time.beginning_of_year..start_time.end_of_year)
   end
-    def resolve_layout
+
+  def resolve_layout
     case action_name
     when "show_pdf"
       "pdf_layout"
     else
       "application"
     end
+  end
+
+  private
+
+  def generate_pdf(invoice)
+    html = render_to_string(:action => :show_pdf, :layout => false)
+    pdf = PDFKit.new(html).to_pdf
+    send_data(pdf,
+     :filename    => "faktura{@invoice.number }.pdf",
+     :disposition => 'attachment')
+    Prawn::Document.new do
+      text client.name, align: :center
+      text "Address: #{client.address}"
+      text "Email: #{client.email}"
+    end.render
   end
 end

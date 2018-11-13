@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160125202445) do
+ActiveRecord::Schema.define(:version => 20181111114926) do
 
   create_table "camps", :force => true do |t|
     t.string   "name"
@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(:version => 20160125202445) do
     t.string   "quote2"
     t.string   "quote3"
     t.string   "quote4"
+    t.string   "account"
+    t.string   "vat_number"
   end
 
   create_table "pages", :force => true do |t|

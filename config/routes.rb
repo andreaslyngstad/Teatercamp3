@@ -1,5 +1,5 @@
 Teatercamp3::Application.routes.draw do
-  
+
   get "credit_note/index"
 
   get "invoices/create"
@@ -16,9 +16,9 @@ Teatercamp3::Application.routes.draw do
   resources :data_files
   resources :invoices
   resource :session
-  resources :posts 
+  resources :posts
   resources :contacts
- 
+
   resources :pages do
      get :move_higher, :on => :member
      get :move_lower, :on => :member
@@ -32,7 +32,7 @@ Teatercamp3::Application.routes.draw do
  match "/view_emails" => 'registrations#emails', :as => :emails
  match "/set_paid/:id" => 'invoices#set_paid', :as => :set_paid
  match "/category/:id" => 'public#category', :as => :category
- match "/comments/set_status" => "comments#set_status" 
+ match "/comments/set_status" => "comments#set_status"
  match "/cms" => 'home#index', :as => :cms
  match "/view_blogg" => 'public#blogg', :as => :view_blogg
  match "/view_camps" => 'public#camps', :as => :view_camps
@@ -43,15 +43,16 @@ Teatercamp3::Application.routes.draw do
  match 'view/:name' => 'public#view', :as => :view_page
  match 'invoice_send/:id' => 'invoices#invoice_send', :as => :invoice_send
  match 'send_reminder/:id' => 'invoices#reminder_send', :as => :send_reminder
+ match 'download_pdf/:id' => 'invoices#download_pdf', :as => :download_pdf
  match 'show_pdf/:id' => 'invoices#show_pdf', :as => :show_pdf
  match 'credit_note/:id' => 'invoices#credit_note', :as => :credit_note
  match 'show_credit_note/:id' => 'invoices#show_credit_note', :as => :show_credit_note
  match '/totals' => 'invoices#totals', :as => :totals
 
 
-  
- 
 
-  
+
+
+
 
 end

@@ -12,30 +12,30 @@
 </head>
 <div class="pdf_header">
 <h1>Faktura for <%= @invoice.registration.camp.name %></h1>
-		
-    
+
+
 </div>
-<div class="pdf_info">          
+<div class="pdf_info">
     <p>Andreas Lyngstad</p>
-    <p>Org.nr: NO 915036570 MVA</p>
+    <p>Org.nr: <%= @vat %></p>
     <p>Åsheimkroken 106</p>
     <p>1820 Spydeberg</p>
     <p>Epost: andreas@lizz.no</p>
-    <p>Kontonr: 1503 10 28598</p>
+    <p>Kontonr: <%= @account %></p>
     <p>Faktura dato: <%=   @invoice.made_date.strftime('%d.%m.%Y') %></p>
     <p>Faktura forfall: <%=   @invoice.pay_by.strftime('%d.%m.%Y') %></p>
     </div>
 
 <div class="faktura_wrapper">
-	
+
 <div class="faktura_text">
-		
+
 
 
 <table class="invoice_show" border="0" cellspacing="1" cellpadding="1" >
 	<tr><td>Faktura nummer</td>
 		<td><%= @invoice.number %></td>
-		
+
 	</tr>
 	<tr><td>Deltager</td><td><%= @invoice.registration.name %></td></tr>
 	<tr><td>Faktura epost</td><td><%= @invoice.registration.billing_email %></td></tr>
@@ -52,25 +52,25 @@
 	<tr><td><%= product.description %></td>
 		<td style="text-align: right;"><%= number_to_currency(product.eks_vat) %></td>
 		<td style="text-align: right;"><%= number_to_currency(product.vat_in_currency) %></td>
-	
+
 		<td style="text-align: right;"><%= number_to_currency(product.total_price) %></td>
 		<td style="text-align: right;"><%=  number_to_percentage(product.vat) %></td>
 		</tr>
-	
+
 	<% end -%>
 	<tr><td style="border-top: 1px solid #000;">Total</td>
 	<td style="text-align: right;border-top: 1px solid #000;"><%= number_to_currency(@invoice.registration.camp.total_eks_vat) %></td>
 	<td style="text-align: right;border-top: 1px solid #000;"><%= number_to_currency(@invoice.registration.camp.total_vat) %></td>
-	
+
 
 	<td style="text-align: right;border-top: 1px solid #000;"><%= number_to_currency(@invoice.registration.camp.products.sum(:total_price)) %></td>
 	<td></td>
 	</tr>
-	
-	
+
+
 </table>
 </div>
 <div class='last_lines'>
-<p>Beløp <%= number_to_currency(@invoice.registration.camp.products.sum(:total_price)) %> til konto 1503 10 28598</p>
+<p>Beløp <%= number_to_currency(@invoice.registration.camp.products.sum(:total_price)) %> til konto <%= @account %></p>
  </div>
   </div>
