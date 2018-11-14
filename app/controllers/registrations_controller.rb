@@ -17,7 +17,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1.xml
   def show
     @registration = Registration.find(params[:id])
-   
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @registration }
@@ -34,7 +34,7 @@ class RegistrationsController < ApplicationController
     @camp = Camp.find(params[:id])
     @registration.camp =  @camp
     render :action => "new", :layout => "camps"
-   
+
   end
 
   # GET /registrations/1/edit
@@ -52,7 +52,7 @@ class RegistrationsController < ApplicationController
     @registration.paid = false
     respond_to do |format|
       format.html do
-        
+
           if @registration.save
             @invoice = Invoice.new
             @invoice.registration = @registration
@@ -61,14 +61,14 @@ class RegistrationsController < ApplicationController
             @invoice.sent = false
             @invoice.save
             flash[:notice] = 'Påmeldingen er registrert.'
-            render(:controller => "registrations", :action => "thank_you", :layout => "camps" ) 
+            render(:controller => "registrations", :action => "thank_you", :layout => "camps" )
           else
             render :action => "new", :layout => "camps"
           end
-        
-          
+
+
       end
-     format.js {render :action => "validate"} 
+     format.js {render :action => "validate"}
     end
   end
 
@@ -81,7 +81,7 @@ class RegistrationsController < ApplicationController
       if @registration.update_attributes(params[:registration])
         flash[:notice] = 'Påmeldingen ble oppdatert!'
         format.html { redirect_to(registrations_path) }
-        format.js 
+        format.js
         format.xml  { head :ok }
       else
         format.html { render :action => "index" }
@@ -101,7 +101,7 @@ class RegistrationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  def thank_you 
+  def thank_you
     @option = Option.first
     @parents = Page.roots
     @registration = Registration.find(params[:id])
@@ -111,12 +111,12 @@ class RegistrationsController < ApplicationController
   @small_mails = Registration.find(:all, :conditions => ["age < ?", "13"]).map{|reg| reg.billing_email + ", "}.uniq
   @medium_mails = Registration.find(:all, :conditions => ["age > ? AND age < ?", "12", "16"]).map{|reg| reg.billing_email + ", "}.uniq
   @big_mails = Registration.find(:all, :conditions => ["age > ?", "15"]).map{|reg| reg.billing_email + ", "}.uniq
-  
-  
-   @all_mails = @registrations.map{|reg| reg.billing_email + ", "}.uniq
-  
+
+
+   @all_mails = @registrations.map{|reg| reg.billing_email}.uniq
+
   @camps = Camp.all
   end
-  
-  
+
+
 end

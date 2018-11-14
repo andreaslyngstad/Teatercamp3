@@ -5,7 +5,7 @@
 <table class="tablesorter" cellspacing="0" cellpadding="0">
 	<thead>
 <tr>
-	
+
 <th class="header">Beskrivelse</th>
 <th class="header">Pris ink mva</th>
 <th class="header">Moms prosent</th>
@@ -19,12 +19,8 @@
     <td><%= product.total_price %></td>
     <td><%= product.vat %></td>
     <td><%= number_to_currency(product.eks_vat) %></td>
-    <td><%= link_to 'Show', product %><%= link_to 'Edit', edit_product_path(product) %><%= link_to 'Destroy', product, :confirm => 'Er du sikker?', :method => :delete %></td>
+    <td><%= link_to 'Vis', product %> <%= link_to 'Rediger', edit_product_path(product) %> <%= link_to 'Slett', product, :confirm => 'Er du sikker?', :method => :delete %></td>
   </tr>
 <% end %>
-<tbody> 
+<tbody>
 </table>
-
-
-
-

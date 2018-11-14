@@ -1,10 +1,10 @@
 
-jQuery.ajaxSetup({ 
+jQuery.ajaxSetup({
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 })
 
 jQuery.fn.submitWithAjax = function() {
-  this.submit(function() { 
+  this.submit(function() {
     $.post(this.action, $(this).serialize(), null, "script");
     $('.spinning').show();
     return false;
@@ -13,16 +13,17 @@ jQuery.fn.submitWithAjax = function() {
 };
 
 jQuery.fn.send_invoice = function (){
-  this.on('click', function() { 
+  this.on('click', function() {
     var invoice_id =  $(this).attr("data-id");
-   
-  $('#spinning_' + invoice_id).show();
-  $.getScript("/invoice_send/" + invoice_id)
+    var object =  $(this).attr("data-object");
+    $('#spinning_' + invoice_id).show();
+    console.log(object + ' ' + invoice_id)
+  $.getScript("/invoice_send/" + invoice_id )
     })
 };
 jQuery.fn.send_reminder = function (){
-  this.on('click', function() { 
-    
+  this.on('click', function() {
+
     var invoice_id =  $(this).attr("data-id");
     $('#spinning_' + invoice_id).show();
  	 $.getScript("/send_reminder/" + invoice_id)
@@ -42,13 +43,13 @@ $(document).ready(function() {
         resize : false
   });
 	$('input#search').quicksearch('table.tablesorter tbody tr', {
-   
+
 	});
   $('.square').click(function(){
     var id = this.id
     window.location.href = '/registrations/new?id=' + id;
   })
-	$(".tablesorter").tablesorter(); 
+	$(".tablesorter").tablesorter();
 	$(".send_link").send_invoice();
 	$(".send_link_reminder").send_reminder();
 
@@ -56,7 +57,7 @@ $(document).ready(function() {
       Progressive enhancement.  If javascript is enabled we change the body class.  Which in turn hides the checkboxes with css.
     */
     $('body').attr("class","js");
-    
+
     /*
       Add toggle switch after each checkbox.  If checked, then toggle the switch.
     */
@@ -64,16 +65,16 @@ $(document).ready(function() {
      /*
       When the toggle switch is clicked, check off / de-select the associated checkbox
      */
-    
+
     $('.toggle').click(function(e) {
 		var id = $(this).attr('data_id')
 		$("#paid_spinning_" + id).show();
 		$.get("/set_paid/" + id);
-		
-		
+
+
       e.preventDefault();
 
     });
-    
-    
+
+
   });

@@ -43,6 +43,7 @@ Teatercamp3::Application.routes.draw do
  match 'view/:name' => 'public#view', :as => :view_page
  match 'invoice_send/:id' => 'invoices#invoice_send', :as => :invoice_send
  match 'send_reminder/:id' => 'invoices#reminder_send', :as => :send_reminder
+ match 'send_creditnote/:id' => 'invoices#send_creditnote', :as => :send_creditnote
  match 'download_pdf/:id' => 'invoices#download_pdf', :as => :download_pdf
  match 'show_pdf/:id' => 'invoices#show_pdf', :as => :show_pdf
  match 'credit_note/:id' => 'invoices#credit_note', :as => :credit_note

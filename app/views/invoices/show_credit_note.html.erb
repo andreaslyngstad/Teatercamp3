@@ -1,1 +1,76 @@
-test
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css" media="print">
+.faktura_wrapper{position: absolute; top: 0; left: 0; }
+.faktura_text{position: relative; top: 8cm; left: 0.7cm;max-width: 20cm; display: ;}
+.pdf_header{position: absolute; top: 1cm; left:1cm; width: 21cm; font-size: 10px; }
+.pdf_info{position: absolute; top: 1cm; left:12cm;  font-size: 10px; }
+.invoice_show{max-width: 20cm; font-size: 10px;display: block;}
+.invoice_show td {max-width: 4cm;}
+.last_lines{position: absolute;top: 18cm; left:1cm;display: block; width: 20cm;font-size: 10px;}
+</style>
+</head>
+<div class="pdf_header">
+<h1>Kreditnota for faktura <%= @invoice.number %></h1>
+
+
+</div>
+<div class="pdf_info">
+    <p>Andreas Lyngstad</p>
+    <p>Org.nr: <%= @vat %></p>
+    <p>Åsheimkroken 106</p>
+    <p>1820 Spydeberg</p>
+    <p>Epost: andreas@lizz.no</p>
+    <!-- <p>Kontonr: <%= @account %></p> -->
+    <p>Kreditert dato: <%=   @invoice.made_date.strftime('%d.%m.%Y') %></p>
+    <p>SKAL IKKE BETALES</p>
+    </div>
+
+<div class="faktura_wrapper">
+
+<div class="faktura_text">
+
+
+
+<table class="invoice_show" border="0" cellspacing="1" cellpadding="1" >
+	<tr><td>Kreditnota nummer</td>
+		<td><%= @credit_note.id %></td>
+
+	</tr>
+	<tr><td>Deltager</td><td><%= @invoice.registration.name %></td></tr>
+	<tr><td>Faktura epost</td><td><%= @invoice.registration.billing_email %></td></tr>
+	<tr><td>Kurs</td><td><%= @invoice.registration.camp.name %></td></tr>
+	<tr><td>Fra <%= @invoice.registration.camp.begin.strftime('%d.%m.%Y')%></td><td>Til <%= @invoice.registration.camp.end.strftime('%d.%m.%Y') %></td></tr>
+
+	<tr style="font-weight: bold;"><td style=" text-align: left;">Produkter</td>
+		<td style=" text-align: right;">Pris</td>
+		<td style=" text-align: right;">MVA</td>
+		<td style=" text-align: right;">Pris ink MVA</td>
+		<td style=" text-align: right;">MVA %</td>
+		</tr>
+	<% @invoice.registration.camp.products.each do |product| %>
+	<tr><td><%= product.description %></td>
+		<td style="text-align: right;">- <%= number_to_currency(product.eks_vat) %></td>
+		<td style="text-align: right;">- <%= number_to_currency(product.vat_in_currency) %></td>
+
+		<td style="text-align: right;">- <%= number_to_currency(product.total_price) %></td>
+		<td style="text-align: right;">- <%=  number_to_percentage(product.vat) %></td>
+		</tr>
+
+	<% end -%>
+	<tr><td style="border-top: 1px solid #000;">Total</td>
+	<td style="text-align: right;border-top: 1px solid #000;">- <%= number_to_currency(@invoice.registration.camp.total_eks_vat) %></td>
+	<td style="text-align: right;border-top: 1px solid #000;">- <%= number_to_currency(@invoice.registration.camp.total_vat) %></td>
+
+
+	<td style="text-align: right;border-top: 1px solid #000;">- <%= number_to_currency(@invoice.registration.camp.products.sum(:total_price)) %></td>
+	<td></td>
+	</tr>
+
+
+</table>
+</div>
+<div class='last_lines'>
+<p>Beløp - <%= number_to_currency(@invoice.registration.camp.products.sum(:total_price)) %> </p>
+ </div>
+  </div>

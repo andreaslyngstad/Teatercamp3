@@ -51,8 +51,10 @@ class InvoicesController < ApplicationController
 
   def invoice_send
     @invoice = Invoice.find(params[:id])
-    @invoice.made_date = Time.now
-    @invoice.pay_by = Time.now + 14.days
+    if @invoice.made_date.nil?
+      @invoice.made_date = Time.now
+      @invoice.pay_by = Time.now + 14.days
+    end
     @invoice.sent = true
     @invoice.save
      respond_to do |wants|
@@ -90,12 +92,26 @@ class InvoicesController < ApplicationController
     end
   end
   def credit_note
+
     @invoice = Invoice.find(params[:id])
     @credit_note = CreditNote.new
     @credit_note.invoice = @invoice
     @credit_note.total = -(@invoice.registration.camp.products.sum(:total_price))
-    @credit_note.save
+    if @credit_note.save
+      respond_to do |wants|
+         if InvoiceMailer.send_credit_note(@credit_note).deliver
+         wants.js
+       end
+     end
     redirect_to(invoices_path)
+    end
+  end
+  def show_credit_note
+    @invoice = CreditNote.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @invoice }
+    end
   end
   def totals
     if !params[:year].nil?
