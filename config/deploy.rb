@@ -9,7 +9,7 @@ set :repo_url, 'git@github.com:andreaslyngstad/Teatercamp3.git'
 
 
 # Default branch is :master
-set :branch, '2016'
+set :branch, 'master'
 
 # Default deploy_to directory is /var/www/my_app_name
 
