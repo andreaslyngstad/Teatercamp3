@@ -3,8 +3,7 @@ class InvoiceMailer < ActionMailer::Base
 
   def send_invoice(invoice)
     @invoice = invoice
-    @registration = @invoice.registration
-    @camp = @registration.camp
+    collecter
     html = render_to_string(:action => "../invoices/show_pdf.html.erb")
      mail(:to => @registration.billing_email, :subject => "Faktura", :bcc => 'faktura@teatercamp.no') do |format|
       format.text
@@ -16,8 +15,7 @@ class InvoiceMailer < ActionMailer::Base
   end
   def send_reminder(invoice)
     @invoice = invoice
-    @registration = @invoice.registration
-    @camp = @registration.camp
+    collecter
     html = render_to_string(:action => "../invoices/show_pdf.html.erb")
      mail(:to => @registration.billing_email, :subject => "Påminnelse", :bcc => 'faktura@teatercamp.no') do |format|
       format.text
@@ -30,8 +28,7 @@ class InvoiceMailer < ActionMailer::Base
   def send_credit_note(invoice)
     @credit_note = invoice
     @invoice = invoice.invoice
-    @registration = @invoice.registration
-    @camp = @registration.camp
+    collecter
     html = render_to_string(:action => "../invoices/show_credit_note.html.erb")
      mail(:to => @registration.billing_email, :subject => "Kreditnota", :bcc => 'faktura@teatercamp.no') do |format|
       format.text
@@ -43,10 +40,12 @@ class InvoiceMailer < ActionMailer::Base
   end
 private
 
-  def collecter(invoice)
-    @invoice = invoice
+  def collecter
     @registration = @invoice.registration
     @camp = @registration.camp
+    option = Option.first
+    @vat = option.vat_number
+    @account = option.account
   end
 
 end

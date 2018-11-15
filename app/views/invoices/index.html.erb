@@ -49,22 +49,22 @@ Ikke sendt
 	<% if invoice.credit_note.nil? %>
 		<% if invoice.sent == true%>
 			<% if !invoice.reminder_date.nil? %>
-			Påminnelse sendt <%= invoice.reminder_date.strftime('%d.%m.%Y')%>
-			<span class="send_link_wr"><a class="send_link_reminder" data-object="invoice" data-id="<%= invoice.id.to_s %>">Påminnelse</a></span>
+  			Påminnelse sendt <%= invoice.reminder_date.strftime('%d.%m.%Y')%>
+  			<span class="send_link_wr"><a class="send_link_reminder" data-object="invoice" data-id="<%= invoice.id.to_s %>">Påminnelse</a></span>
 			<% else %>
-			Sendt <%= invoice.made_date.strftime('%d.%m.%Y')%>
+			   Sendt <%= invoice.made_date.strftime('%d.%m.%Y')%>
 			<span class="send_link_wr"><a class="send_link_reminder" data-object="invoice" data-id="<%= invoice.id.to_s %>">Påminnelse</a></span>
 			<% end -%>
-		<% else %>
-    <span class="send_link_wr"><a class="send_link" id="send_link_<%= invoice.id.to_s  %>"data-object="invoice" data-id="<%= invoice.id.to_s %>">Send</a></span>
+      <span class="send_link_wr"><a class="send_link_credit" data-object="invoice" data-id="<%= invoice.id.to_s %>">Kreditt</a></span>
+    <% else %>
+      <span class="send_link_wr"><a class="send_link" id="send_link_<%= invoice.id.to_s  %>"data-object="invoice" data-id="<%= invoice.id.to_s %>">Send</a></span>
 
-		<% end -%>
+    <% end -%>
 		<span class="spinning" id="spinning_<%= invoice.id.to_s  %>" style="display:none;"></span>
 
 
-		<%= link_to 'Kredit', credit_note_path(invoice), :confirm => 'Er du sikker på at du vil lage en kreditnota på #{invoice.number}'%>
 		<% else %>
-	<%= link_to 'Vis_kredit_nota', show_credit_note_path(invoice)%>
+	<%= link_to 'Vis_kredit_nota', show_credit_note_path(invoice.credit_note)%>
 	<% end -%>
 
 <% end -%>

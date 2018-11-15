@@ -1,7 +1,5 @@
 class RegistrationsController < ApplicationController
   skip_before_filter :login_required?, :only => [ :new, :create, :thank_you]
-  # GET /registrations
-  # GET /registrations.xml
 
   def index
     @camps = Camp.where(:public => true)
@@ -47,7 +45,7 @@ class RegistrationsController < ApplicationController
   def create
     @option = Option.first
     @registration = Registration.new(params[:registration])
-     @pages = Page.order("lft")
+    @pages = Page.order("lft")
     @camp = @registration.camp
     @registration.paid = false
     respond_to do |format|
@@ -108,9 +106,9 @@ class RegistrationsController < ApplicationController
   end
   def emails
   @registrations = Registration.all
-  @small_mails = Registration.find(:all, :conditions => ["age < ?", "13"]).map{|reg| reg.billing_email + ", "}.uniq
-  @medium_mails = Registration.find(:all, :conditions => ["age > ? AND age < ?", "12", "16"]).map{|reg| reg.billing_email + ", "}.uniq
-  @big_mails = Registration.find(:all, :conditions => ["age > ?", "15"]).map{|reg| reg.billing_email + ", "}.uniq
+  @small_mails = Registration.find(:all, :conditions => ["age < ?", "13"]).map{|reg| reg.billing_email}.uniq
+  @medium_mails = Registration.find(:all, :conditions => ["age > ? AND age < ?", "12", "16"]).map{|reg| reg.billing_email }.uniq
+  @big_mails = Registration.find(:all, :conditions => ["age > ?", "15"]).map{|reg| reg.billing_email }.uniq
 
 
    @all_mails = @registrations.map{|reg| reg.billing_email}.uniq

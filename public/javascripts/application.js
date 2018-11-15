@@ -17,7 +17,6 @@ jQuery.fn.send_invoice = function (){
     var invoice_id =  $(this).attr("data-id");
     var object =  $(this).attr("data-object");
     $('#spinning_' + invoice_id).show();
-    console.log(object + ' ' + invoice_id)
   $.getScript("/invoice_send/" + invoice_id )
     })
 };
@@ -29,6 +28,15 @@ jQuery.fn.send_reminder = function (){
  	 $.getScript("/send_reminder/" + invoice_id)
     })
 };
+jQuery.fn.send_credit_note = function (){
+  this.on('click', function() {
+
+    var invoice_id =  $(this).attr("data-id");
+    $('#spinning_' + invoice_id).show();
+ 	 $.getScript("/credit_note/" + invoice_id)
+    })
+};
+
 
 
 
@@ -51,6 +59,7 @@ $(document).ready(function() {
   })
 	$(".tablesorter").tablesorter();
 	$(".send_link").send_invoice();
+  $(".send_link_credit").send_credit_note();
 	$(".send_link_reminder").send_reminder();
 
     /*

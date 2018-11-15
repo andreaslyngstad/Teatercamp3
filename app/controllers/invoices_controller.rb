@@ -92,7 +92,6 @@ class InvoicesController < ApplicationController
     end
   end
   def credit_note
-
     @invoice = Invoice.find(params[:id])
     @credit_note = CreditNote.new
     @credit_note.invoice = @invoice
@@ -103,14 +102,14 @@ class InvoicesController < ApplicationController
          wants.js
        end
      end
-    redirect_to(invoices_path)
     end
   end
   def show_credit_note
-    @invoice = CreditNote.find(params[:id])
+    @credit_note = CreditNote.find(params[:id])
+    @invoice = @credit_note.invoice
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @invoice }
+      format.xml  { render :xml => @credit_note }
     end
   end
   def totals

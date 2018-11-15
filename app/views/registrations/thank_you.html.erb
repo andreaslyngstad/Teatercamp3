@@ -12,9 +12,10 @@
 <div class="thanks">
 <div class="thanks_bk_color">
 <div class='left'>
+<%= link_to "Tilbake", root_path %>
 <h2>Tusen takk for påmeldingen!</h2>
 	<p>Vi sender snart ut en faktura. Nå den er betalt er plassen din. Dersom det ikke er plass på kurset tar vi kontakt.</p>
-		Navn: <%=h @registration.name %> <br/>	
+		Navn: <%=h @registration.name %> <br/>
 		Alder: <%=h @registration.age %><br/>
 			<% if @registration.camp.age1 < 18 %>
 				Foresatt navn: <%=h @registration.parent_one_name %><br/>
@@ -24,13 +25,13 @@
 			<% else %>
 				Telefon: <%=h @registration.parent_one_phone %><br/>
 			<% end %>
-		Faktura epost: <%=h @registration.billing_email %><br/>	
+		Faktura epost: <%=h @registration.billing_email %><br/>
 		Fortell om deg selv: <%=h @registration.tell %><br/>
  		Medisinsk informasjon: <%=h @registration.medical %>	<br/>
-<p>Vi tar kontakt og gir mer informasjon.</p> 
+<p>Vi tar kontakt og gir mer informasjon.</p>
 <p>Vi gleder oss til å treffe deg!</p>
 </div>
-<div class='right'>    
+<div class='right'>
 
 </div>
 
