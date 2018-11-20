@@ -42,13 +42,13 @@ class ApplicationController < ActionController::Base
 
 
 
-  def get_pages_for_tabs
-    @tabs = Page.find_main
- end
-
- def get_sub_tabs
-    @subtabs = Page.find_subpages
- end
+  # def get_pages_for_tabs
+  #   @tabs = Page.find_main
+  # end
+  #
+  #  def get_sub_tabs
+  #     @subtabs = Page.find_subpages
+  #  end
 
 
  protected

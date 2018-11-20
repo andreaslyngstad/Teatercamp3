@@ -22,27 +22,27 @@ h1 a							{color:red;}
 	display: block;
 	width: 50px;
 	background-color: red;
-  	
+
 }
 
 .toggle.checked{
   background-color: green;
 }
 
-#tabs {
+.tabs {
 	position:absolute; top:117px; left:200px;
   	width:100%;
   	font-family:Verdana,Helvetica,sans-serif;
   	font-size:100%;
-	 
+
       }
-#tabs ul{
+.tabs ul{
 	list-style: none;
 	padding:0;
 	margin:0;
 	height: 32px;
 }
-#tabs li {
+.tabs li {
     float: left;
 	margin: 0;
 	padding: 0;
@@ -55,7 +55,7 @@ h1 a							{color:red;}
 	position: relative;
 	background: #e0e0e0;
 }
-#tabs li a{
+.tabs li a{
 	text-decoration: none;
 	color: #000;
 	display: block;
@@ -64,42 +64,42 @@ h1 a							{color:red;}
 	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
 	outline: none;
 }
-#tabs li:hover {
+.tabs li:hover {
 	background-color:#ccc;
 }
-#tabs li.active, #tabsH li.active a:hover{
+.tabs li.active, .tabsH li.active a:hover{
 	background-color:#fff;
 	border-bottom: 1px solid #fff
 }
 
 
 
-#subtabs{
+.subtabs{
 	position:absolute; top:160px; left:200px;
   	width:100%;
   	font-family:Verdana,Helvetica,sans-serif;
   	font-size:100%;
 }
-#subtabs ul{
+.subtabs ul{
 	list-style: none;
 	padding:0;
 	margin:0;
 	height: 32px;
 }
-#subtabs li {
+.subtabs li {
     float: left;
 	margin: 0;
 	padding: 0;
 	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
 	line-height: 31px; /*--Vertically aligns the text within the tab--*/
-	
-	
+
+
 	overflow: hidden;
 	position: relative;
-	
+
 }
 
-#subtabs li a{
+.subtabs li a{
 
 	color: #000;
 	display: block;
@@ -109,25 +109,25 @@ h1 a							{color:red;}
 	outline: none;
 }
 
-#subtabs li.active, #tabsH li.active a:hover{
+.subtabs li.active, .tabs li.active a:hover{
 	text-decoration: underline;
-	
+
 }
 
 
-#subtabs li a{
+.subtabs li a{
 	display: block;
 float: left;
 width: 100%;
 }
-  
+
   #logged_in {position:absolute; top:20px; right:20px;}
 #logged_in a {color:#fff;}
 #logged_in a:hover {color:#FC1004;}
 
 .invoice_show tr td {
 	padding: 0 20px 0 0;
-	
+
 }
 
 
@@ -142,26 +142,26 @@ width: 100%;
 
 
 #sub_nav ul 					{padding:15px 0px 15px 0px;}
-#sub_nav ul li					{list-style:none;}		
-#sub_nav ul li b				{display:block;background:url(../images/pil.png) no-repeat 0px; padding:3px 0px 3px 20px;color:#cc0000;font-weight:bold;}		
-#sub_nav ul li a				{display:block;color:#000;font-weight:bold;}		
-#sub_nav ul li a:hover			{margin-left:5px;}		
+#sub_nav ul li					{list-style:none;}
+#sub_nav ul li b				{display:block;background:url(../images/pil.png) no-repeat 0px; padding:3px 0px 3px 20px;color:#cc0000;font-weight:bold;}
+#sub_nav ul li a				{display:block;color:#000;font-weight:bold;}
+#sub_nav ul li a:hover			{margin-left:5px;}
 
 #search_form					{width:249px;height:59px;margin:10px 0px 10px 0px;background:url(../images/search.png) no-repeat;position:relative;}
 #search_form input				{padding:5px 5px 5px 5px;font-size:16px;border:0;position:absolute;left:13px;top:12px;background:none;width:160px;color:#000}
 #search_form .submit			{cursor:pointer;padding:5px 0px 5px 0px;position:absolute;left:187px;top:12px;background:none;color:#fff;width:50px;font-weight:bold;}
 
 
-		
+
 #footer							{background:url(../images/footer_bg.png) repeat-x;}
 #footer_wrapper    				{width:960px;margin:0 auto;min-height:250px;height:auto!important;height:250px;}
 #footer_wrapper .boks			{float:left;width:310px;height:130px;padding:20px 10px 20px 0px;}
 #footer_wrapper #footer_text   	{color:#fff;font-size:11px;padding-top:20px;clear:both;}
 #footer	h3						{font-family:georgia;font-size:14px; font-weight: bold;}
 #footer ul						{padding:2px 0px 0px 0px;}
-#footer ul li					{list-style:none;}		
-#footer ul li a					{display:block; padding:0px 0px 0px 0px;color:#000;font-weight:bold;}		
-#footer ul li a:hover			{color:#999;}	
+#footer ul li					{list-style:none;}
+#footer ul li a					{display:block; padding:0px 0px 0px 0px;color:#000;font-weight:bold;}
+#footer ul li a:hover			{color:#999;}
 
 .form_layout					{padding:20px 0px 20px 0px;}
 .form_layout li					{list-style:none;clear:both;padding-top:2px;}
@@ -196,7 +196,7 @@ width: 100%;
 
 .table_regular_adm 				{width:690px}
 .table_regular_adm tr			{background:#eee;}
-.table_regular_adm tr th,		
+.table_regular_adm tr th,
 .table_regular_adm tr td		{text-align:left;padding:3px 5px 3px 5px;border-bottom:2px solid #fff;}
 .table_regular_adm tr td.right	{text-align:right;}
 table.tablesorter {
@@ -256,4 +256,3 @@ ul,ol							{padding:0px 0px 0px 30px;}
 .css2 { font-size: 1.2em; }
 .css3 { font-size: 1.4em; }
 .css4 { font-size: 1.6em; }
-

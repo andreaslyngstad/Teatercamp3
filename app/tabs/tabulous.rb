@@ -1,171 +1,158 @@
-# Tabulous gives you an easy way to set up tabs for your Rails application.
-#
-#   1. Configure this file.
-#   2. Add <%= tabs %> and <%= subtabs %> in your layout(s) wherever you want
-#      your tabs to appear.
-#   3. Add styles for these tabs in your stylesheets.
-#   4. Profit!
+Tabulous.setup do
 
-Tabulous.setup do |config|
+  tabs do
 
-  #---------------------------
-  #   HOW TO USE THE TABLES
-  #---------------------------
-  #
-  # The following tables are just an array of arrays.  As such, you can put
-  # any Ruby code into a cell.  For example, you could put "/foo/bar" in
-  # a path cell or you could put "/foo" + "/bar".  You can even wrap up code
-  # in a lambda to be executed later.  These will be executed in the context
-  # of a Rails view meaning they will have access to view helpers.
-  #
-  # However, there is something special about the format of these tables.
-  # Because it would be a pain for you to manually prettify the tables each
-  # time you edit them, there is a special rake task that does this for
-  # you: rake tabs:format.  However, for this prettifier to work properly
-  # you have to follow some special rules:
-  #
-  #   * No comments are allowed between rows.
-  #   * Comments are allowed to the right of rows, except for header rows.
-  #   * The start of a table is signified by a [ all by itself on a line.
-  #   * The end of a table is signified by a ] all by itself on a line.
-  #   * And most importantly: commas that separate cells should be surrounded
-  #     by spaces and commas that are within cells should not.  This gives the
-  #     formatter an easy way to distinguish between cells without having
-  #     to actually parse the Ruby.
+    posts_tab do
+      text          { 'Blogg' }
+      link_path     { posts_path}
+      visible_when  { true }
+      enabled_when  { true }
+      a_subtab_is_active { true }
+      active_when   { in_action('any').of_controller('posts') }
+    end
 
-  #----------
-  #   TABS
-  #----------
-  #
-  # This is where you define your tabs and subtabs.  The order that the tabs
-  # appear in this list is the order they will appear in your views.  Any
-  # subtabs defined will have the previous tab as their parent.
-  #
-  # TAB NAME
-  #   must end in _tab or _subtab
-  # DISPLAY TEXT
-  #   the text the user sees on the tab
-  # PATH
-  #   the URL that gets sent to the server when the tab is clicked
-  # VISIBLE
-  #   whether to display the tab
-  # ENABLED
-  #   whether the tab is disabled (unclickable)
+    comments_subtab do
+      text          { 'Kommentarer' }
+      link_path     { comments_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('comments') }
+    end
 
-  config.tabs do
-    [
-      #------------------------------------------------------------------------------------------------------------------------------------------------#
-      #    TAB NAME              |    DISPLAY TEXT       |    PATH                                                   |    VISIBLE?    |    ENABLED?    #
-      #------------------------------------------------------------------------------------------------------------------------------------------------#
-      [    :posts_tab            ,    'Blogg'            ,    posts_path                                             ,    true        ,    true        ],
-      [    :comments_subtab      ,    'Kommentarer'      ,    comments_path                                          ,    true        ,    true        ],
-      [    :categories_subtab    ,    'Kategorier'       ,    categories_path                                        ,    true        ,    true        ],
-      [    :camps_tab            ,    'Kurs'             ,    camps_path                                             ,    true        ,    true        ],
-      [    :registrations_subtab ,    'Påmeldinger'      ,    registrations_path                                     ,    true        ,    true        ],
-      [    :contacts_subtab      ,    'Kontakter'        ,    contacts_path                                          ,    true        ,    true        ],
-      [    :products_subtab      ,    'Produkter'        ,    products_path                                          ,    true        ,    true        ],
-      [    :invoices_subtab      ,    'Faktura'          ,    invoices_path                                          ,    true        ,    true        ],
-      [    :totals_subtab        ,    'Regnskap'         ,    totals_path                                            ,    true        ,    true        ],
-      [    :home_tab             ,    'Hjem'             ,    cms_path                                               ,    true        ,    true        ],    
-      [    :users_subtab         ,    'Bruker'           ,    users_path                                             ,    true        ,    true        ],
-      [    :options_subtab       ,    'Innstillinger'    ,    options_path                                           ,    true        ,    true        ],
-      [    :data_files_subtab    ,    'Bilder'           ,    data_files_path                                        ,    true        ,    true        ],
-      [    :pages_subtab         ,    'Sider'            ,    pages_path                                             ,    true        ,    true        ],
-      #------------------------------------------------------------------------------------------------------------------------------------------------#
-      #    TAB NAME              |    DISPLAY TEXT       |    PATH                                                   |    VISIBLE?    |    ENABLED?    #
-      #------------------------------------------------------------------------------------------------------------------------------------------------#
-    ]
+    categories_subtab do
+      text          { 'Kategorier' }
+      link_path     { categories_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('categories') }
+    end
+
+    camps_tab do
+      text          { 'Kurs' }
+      link_path     { camps_path }
+      visible_when  { true }
+      enabled_when  { true }
+      a_subtab_is_active { true }
+      active_when   { in_action('any').of_controller('camps') }
+    end
+
+    registrations_subtab do
+      text          { 'Påmeldinger' }
+      link_path     { registrations_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('registrations') }
+    end
+
+    contacts_subtab do
+      text          { 'Kontakter' }
+      link_path     { contacts_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('contacts') }
+    end
+
+    products_subtab do
+      text          { 'Produkter' }
+      link_path     { products_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('products') }
+    end
+
+    invoices_subtab do
+      text          { 'Faktura' }
+      link_path     { invoices_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_actions('index', 'show').of_controller('invoices') }
+    end
+
+    totals_subtab do
+      text          { 'Regnskap' }
+      link_path     { totals_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('totals').of_controller('invoices') }
+    end
+
+    home_tab do
+      text          { 'Hjem' }
+      link_path     { cms_path }
+      visible_when  { true }
+      enabled_when  { true }
+      a_subtab_is_active { true }
+      active_when   { in_action('index').of_controller('home') }
+    end
+
+    users_subtab do
+      text          { 'Bruker' }
+      link_path     { users_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('users') }
+    end
+
+    options_subtab do
+      text          { 'Innstillinger' }
+      link_path     { options_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('options') }
+    end
+
+    data_files_subtab do
+      text          { 'Bilder' }
+      link_path     { data_files_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('data_files') }
+    end
+
+    pages_subtab do
+      text          { 'Sider' }
+      link_path     { pages_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('pages') }
+    end
+  #
+  # customize do
+  #
+  #   # which class to use to generate HTML
+  #   # :default, :html5, :bootstrap, :bootstrap_pill or :bootstrap_navbar
+  #   # or create your own renderer class and reference it here
+  #   # renderer :default
+  #
+  #   # whether to allow the active tab to be clicked
+  #   # defaults to true
+  #   # active_tab_clickable true
+  #
+  #   # what to do when there is no active tab for the current controller action
+  #   # :render -- draw the tabset, even though no tab is active
+  #   # :do_not_render -- do not draw the tabset
+  #   # :raise_error -- raise an error
+  #   # defaults to :do_not_render
+  #   # when_action_has_no_tab :do_not_render
+  #
+  #   # whether to always add the HTML markup for subtabs, even if empty
+  #   # defaults to false
+  #   # render_subtabs_when_empty false
+  #
+  # end
+
+  # The following will insert some CSS straight into your HTML so that you
+  # can quickly prototype an app with halfway-decent looking tabs.
+  #
+  # This scaffolding should be turned off and replaced by your own custom
+  # CSS before using tabulous in production.
+  # use_css_scaffolding do
+  #   background_color '#ccc'
+  #   text_color '#444'
+  #   active_tab_color '#fff'
+  #   hover_tab_color '#ddd'
+  #   inactive_tab_color '#aaa'
+  #   inactive_text_color '#888'
   end
-
-  #-------------
-  #   ACTIONS
-  #-------------
-  #
-  # This is where you hook up actions with tabs.  That way tabulous knows
-  # which tab and subtab to mark active when an action is rendered.
-  #
-  # CONTROLLER
-  #   the name of the controller
-  # ACTION
-  #   the name of the action, or :all_actions
-  # TAB
-  #   the name of the tab or subtab that is active when this action is rendered
-
-  config.actions do
-    [
-      #----------------------------------------------------------------------#
-      #    CONTROLLER        |    ACTION          |    TAB                   #
-      #----------------------------------------------------------------------#
-      [    :contacts         ,    :all_actions    ,    :contacts_subtab      ],
-      [    :products         ,    :all_actions    ,    :products_subtab      ],
-      [    :invoices         ,    :all_actions    ,    :invoices_subtab      ],
-      [    :invoices         ,    :totals         ,    :totals_subtab        ],
-      [    :users            ,    :all_actions    ,    :users_subtab         ],
-      [    :sessions         ,    :all_actions    ,    :sessions_tab         ],
-      [    :registrations    ,    :all_actions    ,    :registrations_subtab ],
-      [    :camps            ,    :all_actions    ,    :camps_tab            ],
-      [    :options          ,    :all_actions    ,    :options_subtab       ],
-      [    :data_files       ,    :all_actions    ,    :data_files_subtab    ],
-      [    :categories       ,    :all_actions    ,    :categories_subtab    ],
-      [    :comments         ,    :all_actions    ,    :comments_subtab      ],
-      [    :posts            ,    :all_actions    ,    :posts_tab            ],   
-      [    :pages            ,    :all_actions    ,    :pages_subtab         ],
-      [    :public           ,    :all_actions    ,    :public_tab           ],
-      [    :home             ,    :all_actions    ,    :home_tab             ],
-   
-      #----------------------------------------------------------------------#
-      #    CONTROLLER        |    ACTION          |    TAB                   #
-      #----------------------------------------------------------------------#
-    ]
-  end
-
-  #-------------
-  #   OPTIONS
-  #-------------
-
-  # By default, you cannot click on the active tab.
-  config.active_tab_clickable = true
-
-  # By default, the subtabs HTML element is not rendered if it is empty.
-  config.always_render_subtabs = false
-
-  # By default, when an action renders and no tab is defined for that action,
-  # an error is thrown.  If you turn this off, no error is thrown and the
-  # tabs are simply not rendered.
-  config.raise_error_if_no_tab_found = true
-
-  # By default, div elements are used in the tab markup.  When html5 is
-  # true, nav elements are used instead.
-  config.html5 = true
-
-  #------------
-  #   STYLES
-  #------------
-  #
-  # The markup that is generated has the following properties:
-  #
-  #   Tabs and subtabs that are selected have the class "active".
-  #   Tabs and subtabs that are not selected have the class "inactive".
-  #   Tabs that are disabled have the class "disabled"; otherwise, "enabled".
-  #   Tabs that are not visible do not appear in the markup at all.
-  #
-  # These classes are provided to make it easier for you to create your
-  # own CSS (and JavaScript) for the tabs.
-
-  # Some styles will be generated for you to get you off to a good start.
-  # Scaffolded styles are not meant to be used in production as they
-  # generate invalid HTML markup.  They are merely meant to give you a
-  # head start or an easy way to prototype quickly.
-  # 
-  #config.css.scaffolding = true
-
-  # You can tweak the colors of the generated CSS.
-  #
-  # config.css.background_color = '#ccc'
-  # config.css.text_color = '#444'
-  # config.css.active_tab_color = 'white'
-  # config.css.hover_tab_color = '#ddd'
-  # config.css.inactive_tab_color = '#aaa'
-  # config.css.inactive_text_color = '#888'
 
 end

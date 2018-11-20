@@ -6,43 +6,6 @@
 		 <%= raw(page.body) %>
 		</div>
 	<% end %>
-		
-	<div class="section" id="section<%= x + 1%>" data-anchor="kurs">
-		<% @camps.each do |camp| %>
-		<div class="square" id="<%= camp.id %>">
-	    <div class="content">
-	        <div class="table">
-	          <div class="table-cell" style="vertical-align: middle;">
-	            <h3><%= camp.ingress %></h3>
-	            <%=h camp.begin.strftime('%d.%m.%Y') %> - 
-	            <%=h camp.end.strftime('%d.%m.%Y') %><br/>
-	            Alder <%=h camp.age1 %> - <%=h camp.age2 %> år<br/>
-	         <!--     <%= raw(camp.ingress)%>
-	            <%= number_to_currency(camp.products.sum(:total_price)) %>-->
-	      <!--       <% if camp.registrations.count < camp.participants %> 
-		    				<%= link_to("Meld deg på", new_registration_path(:id => camp) )%>
-		 					<% else %>
-					 			<%= link_to("Venteliste", new_registration_path(:id => camp) )%>
-							<%end%> -->
-	          </div>
-	        </div>
-	    </div>
-	</div>
-		
-	<% end %>
-	</div>
-	<div class="section" id="section<%= x + 2%>"  data-anchor="news">
 
-	<% for post in @posts %>
-    <div class="slide">
-    	<div class='inside_slider'>
-        <h2><%=post.title %></h2>
-        <p><%= raw post.lead %></p>
-        <p><%= raw post.content %></p>
-        <p style="font-size: 70%">Publisert <%= post.updated_at.strftime('%d.%m.%y')  %></p>
-
-      </div>
-	</div>
-    <% end %>
 </div>
 </div>

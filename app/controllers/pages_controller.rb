@@ -1,17 +1,10 @@
 class PagesController < ApplicationController
   # GET /pages
   # GET /pages.xml
- 
-  before_filter :get_pages_for_tabs, :get_sub_tabs
+
+
   def index
-    @pages = Page.find(:all, :order => "pages.lft", :include => :parent)
-    if params[:id].blank?
-    @page = Page.find(:first)
-    else
-    @page = Page.find(params[:id])
-    end
-    @subpages = Page.find(:all, :conditions => ["parent_id = ?", params[:id]])
-    
+    @pages = Page.find(:all)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @pages }
@@ -37,7 +30,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @page }
-      
+
     end
   end
 
@@ -82,29 +75,29 @@ class PagesController < ApplicationController
 
   def move_higher
     @page = Page.find(params[:id])
- 
+
     if @page.move_higher
       flash[:notice] = "Siden ble flyttet!"
     else
       flash[:notice] = "Du kan ikke flytte denne siden høyere"
     end
- 
+
     redirect_to pages_path
   end
- 
-  
+
+
   def move_lower
     @page = Page.find(params[:id])
- 
+
     if @page.move_lower
       flash[:notice] = "Siden ble flyttet!"
     else
       flash[:notice] = "Du kan ikke flytte denne siden lavere"
     end
- 
+
     redirect_to pages_url
   end
-  
+
   # DELETE /pages/1
   # DELETE /pages/1.xml
   def destroy

@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 ruby '2.2.1'
-gem 'rails', '3.0.10'
+gem 'rails', '3.2.19'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem "redcarpet"
 gem "pdfkit"
 gem 'sqlite3'
-gem 'tabulous', '1.0.2'
+gem 'tabulous'
 gem 'better_nested_set'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip", "~> 2.3"

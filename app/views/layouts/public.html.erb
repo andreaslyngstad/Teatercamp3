@@ -6,8 +6,8 @@
 	<%= csrf_meta_tag %>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta name="title" content="<%= @app_name %>: <%= @page_title %>"/>
-  <meta name="keywords" content="<%= @meta_key %>" /> 
-  <meta name="description" content="<%= @meta_des %>" /> 
+  <meta name="keywords" content="<%= @meta_key %>" />
+  <meta name="description" content="<%= @meta_des %>" />
 
   <title><%= @app_name %>: <%= @page_title %></title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" media="screen" rel="stylesheet" type="text/css">
@@ -24,31 +24,47 @@
 
 </script>
 </head>
-<body>	
+<body>
 <div id="fb-root"></div>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
+<!-- <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-	
+}(document, 'script', 'facebook-jssdk'));</script> -->
+
 
 
 <ul id="menu">
-	<% @parents.each do |page| %>
-	<li data-menuanchor="<%= page.title %>"><a href="<%= root_url %>#<%= page.title %>"><%= page.name %></a></li>
+
+<li data-menuanchor="teatercamp"
+<% if current_page?(controller: 'public', action: 'index') %>
+class="active"
 <% end %>
-	<li data-menuanchor="kurs" class="active"><a href="<%= root_url %>#kurs">Kurs</a></li>
-	<li data-menuanchor="news"><a href="<%= root_url %>#news">Nyheter</a></li>
+>
+<a href="<%= root_url %>#teatercamp">Teater|camp</a></li>
+<li data-menuanchor="filmcamp"><a href="<%= root_url %>#filmcamp">Film|camp</a></li>
+<li data-menuanchor="om_oss"><a href="<%= root_url %>#om_oss">Om oss</a></li>
+	<li data-menuanchor="kurs"
+<% if current_page?(controller: 'public', action: 'camps') %>
+class="active"
+<% end %>
+>
+
+    <a href="<%= view_camps_path %>">Kurs</a></li>
+	<li data-menuanchor="news"
+  <% if current_page?(controller: 'public', action: 'blogg') %>
+  class="active"
+  <% end %>
+  >
+  <a href="<%= view_blogg_path %>">Nyheter</a></li>
 	<%if logged_in?%>
-		<li><%= link_to "Logg ut","/logout" %></li> 
-		<li><%= link_to( "Til CMS", cms_path) %></li> 
-				
+		<li><%= link_to "Logg ut","/logout" %></li>
+		<li><%= link_to( "Til CMS", cms_path) %></li>
+
 			<%end%>
-		
+
 </ul>
 <div class="fb-follow" data-href="https://www.facebook.com/teatercamp" data-layout="button_count" data-show-faces="true"></div>
 <%= yield %>
@@ -59,4 +75,3 @@
 
 </body>
 </html>
- 

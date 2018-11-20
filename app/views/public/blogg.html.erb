@@ -1,14 +1,15 @@
 <% @page_title = "Nyheter"%>
 <%= render "nav" %>
-<div id="content_l">			
-test
-
+<div id="section5">
+	<div class="left_camps blogg_bk">
+		<ul>
+			<% @posts_til_liste.each do |post| %>
+				<li>
+					<h1><%= post.title %></h1>
+					<p><%= post.created_at.strftime('%d.%m.%Y') %></p>
+					<p><%= post.content %></p>
+				</li>
+			<% end %>
+		</ul>
+	</div>
 </div>
-	<div id="content_r">	
-	<div class="fb-page" data-href="https://www.facebook.com/teatercamp" data-tabs="timeline" data-width="200" data-height="2000" data-small-header="true" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/teatercamp"><a href="https://www.facebook.com/teatercamp">Teatercamp</a></blockquote></div></div>
-</div>
-
-</div>
-
-
-
