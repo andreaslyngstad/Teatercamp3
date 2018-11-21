@@ -1,6 +1,7 @@
 Teatercamp3::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-
+  # force HTTPS on production
+  config.force_ssl = true
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -13,10 +14,10 @@ Teatercamp3::Application.configure do
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
   # Compress JavaScripts and CSS
   #config.assets.compress = true
-  
+
   # Don't fallback to assets pipeline if a precompiled asset is missed
   #config.assets.compile = true
-  
+
   # Generate digests for assets URLs
   #config.assets.digest = true
   # For nginx:
