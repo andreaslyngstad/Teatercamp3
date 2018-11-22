@@ -2,8 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.find(:all)
-   
+    @categories = Category.all
     @category = Category.find(params[:id]) if params[:id]
     @category = Category.new if @category.nil?
     respond_to do |format|
@@ -12,7 +11,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  
+
   # POST /categories
   # POST /categories.xml
   def create

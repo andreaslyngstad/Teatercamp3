@@ -1,5 +1,5 @@
 <h1>Alle kurs</h1>
-<p><%= link_to "Nytt kurs", new_camp_path%></p>    
+<p><%= link_to "Nytt kurs", new_camp_path%></p>
 
 <table class="tablesorter" cellspacing="0" cellpadding="0">
 	<thead>
@@ -15,13 +15,13 @@
 		<th></th>
 	</tr>
 	</thead>
-<tbody> 
+<tbody>
 	<% @camps.each do |camp| %>
 	<tr id="<%=camp.id %>">
 	<% if params[:id] == camp.id.to_s%>
 	<tr id="<%= params[:id] %>" style="background:#999999">
   		<% end %>
-  	
+
 	    <td><%=h camp.name %></td>
 	    <% if camp.public == false %>
 	    	    <td>nei</td>
@@ -37,10 +37,9 @@
 	    <td>
 	    	<%= link_to 'Vis', camp_path(camp) %>
 	    	<%= link_to 'Oppdater', edit_camp_path(camp) %>
-	   		<%= link_to 'Slett', camp, :confirm => 'Er du sikker?', :method => :delete %></td>
+	   	</td>
   	</tr>
-  
+
 <% end %>
-	<tbody> 
+	<tbody>
 </table>
-		

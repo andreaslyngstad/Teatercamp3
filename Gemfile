@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'tabulous'
 gem 'better_nested_set'
 gem "bcrypt-ruby", :require => "bcrypt"
-gem "paperclip", "~> 2.3"
+gem "paperclip"
 gem 'jquery-rails'
 gem "capistrano"
 gem 'capistrano-bundler'
@@ -21,6 +21,12 @@ gem 'capistrano-passenger'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'test-unit'
+end
+
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 # Use unicorn as the web server
 # gem 'unicorn'

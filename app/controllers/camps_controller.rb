@@ -24,7 +24,7 @@ class CampsController < ApplicationController
       end
     end
   end
- 
+
  def new
    @camp = Camp.new
    @products = Product.all
@@ -45,7 +45,7 @@ class CampsController < ApplicationController
     end
   end
 
-  
+
   def create
     @camp = Camp.new(params[:camp])
     @camps = Camp.all
@@ -62,13 +62,13 @@ class CampsController < ApplicationController
     end
   end
  def update
-   @camp = Camp.find(params[:id]) 
+   @camp = Camp.find(params[:id])
    @products = Product.all
     params[:camp][:product_ids] ||= []
 
     respond_to do |format|
       if @camp.update_attributes(params[:camp])
-        
+
         flash[:notice] = 'Campen ble oppdatert.'
         format.html { redirect_to(camps_path) }
         format.xml  { head :ok }
