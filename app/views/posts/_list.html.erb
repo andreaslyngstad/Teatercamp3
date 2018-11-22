@@ -21,7 +21,7 @@
 		<td>
 			<%= link_to 'Vis', :controller => "public", :action => "view_post", :id => post.id%>
 			<%= link_to 'Oppdater', edit_post_path(post)%>
-			<%= link_to 'Destroy',  post,  method: :delete, data: { confirm: 'Are you sure?' }  %>
+			<%= link_to 'Destroy',  post,  method: :delete, data: { confirm: 'Er du sikker?' }  %>
 		</td>
  	</tr>
 	<% end -%>
