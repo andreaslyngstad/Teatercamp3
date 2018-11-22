@@ -16,18 +16,18 @@
 	<%= csrf_meta_tag %>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta name="title" content="<%= @app_name %>: <%= @page_title %>"/>
-  <meta name="keywords" content="<%= @meta_key %>" /> 
-  <meta name="description" content="<%= @meta_des %>" /> 
+  <meta name="keywords" content="<%= @meta_key %>" />
+  <meta name="description" content="<%= @meta_des %>" />
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= @app_name %>: <%= @page_title %></title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" media="screen" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
   <%= stylesheet_link_tag "application" %>
- <%=  javascript_include_tag "jquery-2.2.0.min","jquery_ujs","jquery.tablesorter.min","jquery.quicksearch","jquery.fullPage.min","application" %>
- 
+ <%=  javascript_include_tag "application" %>
+
 </head>
-<body>	
-		<%= yield  %>	
+<body>
+		<%= yield  %>
 	</body>
 </html>
