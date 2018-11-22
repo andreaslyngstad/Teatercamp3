@@ -2,7 +2,7 @@
 
 # require 'capistrano/rails/migrations'
 # config valid only for current version of Capistrano
-lock '3.4.0'
+lock '3.11.0'
 
 set :application, 'teatercamp'
 set :repo_url, 'git@github.com:andreaslyngstad/Teatercamp3.git'
@@ -16,7 +16,7 @@ set :branch, 'master'
 set :deploy_to, "/var/www/vhosts/teatercamp.no/httpdocs/teatercamp.no"
 
 # Default value for :scm is :git
-set :scm, :git
+
 set :bundle_path, '/var/www/vhosts/teatercamp.no/httpdocs/teatercamp.no/gems'
 
 # Default value for :format is :pretty

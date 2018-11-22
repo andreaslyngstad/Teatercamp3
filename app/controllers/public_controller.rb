@@ -46,7 +46,7 @@ class PublicController < ApplicationController
 
   def view_post
     @option = Option.first
-    @post = Post.find(params[:id], :include => [:author, :categories, :approved_comments])
+    @post = Post.find(params[:id], :include => [:author, :categories])
     @posts_til_liste = Post.eager_post
     render(:template => 'shared/view_post')
 

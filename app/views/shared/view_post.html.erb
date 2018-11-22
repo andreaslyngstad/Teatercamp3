@@ -3,25 +3,10 @@
 <div id="blogg_l">
 	<%= link_to "Vis alle", view_blogg_path, :style => "float:right;"%>
 	<h1><%= @post.title %></h1>
-	
-		Av: <%= @post.author.full_name %>, <em><%= @post.created_at.strftime("%d. %B %Y") %>.</em>	
-	<p><b><%= raw(@post.lead) %></b></p>	
-	<p><%= raw(@post.content) %></p>	
-		
-
-	<% if @post.comments_count != 0%>
-		<h3>Kommentarer</h3>
-		<%= render(:partial => 'shared/comment', :collection => @post.approved_comments) %>	
-	<% end %>
-		
-	<div id="comment_form">
-	<%= render :partial => "shared/newcomment"%>
-	</div>
-	
+		Av: <%= @post.author.full_name %>, <em><%= @post.created_at.strftime("%d. %B %Y") %>.</em>
+	<p><b><%= raw(@post.lead) %></b></p>
+	<p><%= raw(@post.content) %></p>
 </div>
-
 <div id="content_r">
-	<%= render :partial => "shared/links" %>	
+	<%= render :partial => "shared/links" %>
 </div>
-
-

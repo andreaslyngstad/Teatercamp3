@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
 
 
-  scope :eager_post, :include => [:author, :approved_comments, :categories], :order => "created_at DESC", :conditions => "status = 'Offentlig'"
+  scope :eager_post, :include => [:author, :categories], :order => "created_at DESC", :conditions => "status = 'Offentlig'"
 
   belongs_to :author, :class_name => "User",
                       :foreign_key => "author_id"
@@ -21,7 +21,6 @@ class Post < ActiveRecord::Base
 
     else
       @posts = Post.find(:all,
-      :include => [:author, :approved_comments],
       :conditions => "status = 'Offentlig'",
       :order => "posts.created_at DESC")
     end
