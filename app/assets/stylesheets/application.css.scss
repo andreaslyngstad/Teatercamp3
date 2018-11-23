@@ -1,6 +1,7 @@
 /*
 *= require_self
 *= require jquery.fullPage
+*= require forms-min
 */
 html,body					{color:#fff;
 									}
@@ -191,19 +192,19 @@ h1{border-bottom: 1px solid #641778;}
 
 #section1{
 
-	background: asset-data-url("public.jpg") 50% 50% / cover;
+	background: url(asset_path('public.jpg', image)) 50% 50% / cover;
 }
 #section2{
-	background: asset-data-url("filmcamp.jpg") 50% 50% / cover;
+	background: url(asset_path("filmcamp.jpg", image)) 50% 50% / cover;
 }
 #section3{
-	background: asset-data-url("om_oss.jpg") 50% 50% / cover;
+	background: url(asset_path("om_oss.jpg", image)) 50% 50% / cover;
 }
 #section4{
-	background: asset-data-url("kurs.jpg") 50% 50% / cover;
+	background: url(asset_path("kurs.jpg", image)) 50% 50% / cover;
 }
 #section5{
-	background: asset-data-url("skog.jpg") 50% 50% / cover;
+	background: url(asset_path("skog.jpg", image)) 50% 50% / cover;
 }
 .new_camp{
 	height: 1000px;

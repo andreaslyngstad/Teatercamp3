@@ -22,7 +22,7 @@ class PublicController < ApplicationController
   end
   def view
     @page = Page.find_by_name(params[:name])
-    @parents = Page.roots
+    # @parents = Page.roots
     @option = Option.first
   end
 
