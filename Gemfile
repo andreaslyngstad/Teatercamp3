@@ -17,17 +17,17 @@ gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-passenger'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'test-unit'
 end
 
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
