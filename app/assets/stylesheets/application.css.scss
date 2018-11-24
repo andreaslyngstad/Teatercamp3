@@ -1,8 +1,7 @@
-/*
-*= require_self
-*= require jquery.fullPage
-*= require forms-min
-*/
+
+@import 'jquery.fullPage';
+@import 'forms-min';
+
 html,body					{color:#fff;
 									}
 .clr							{clear:both;}
