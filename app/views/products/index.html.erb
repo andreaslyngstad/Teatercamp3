@@ -16,9 +16,9 @@
 <% @products.each do |product| %>
 <tr>
 	 <td><%= product.description %></td>
-    <td><%# product.total_price %></td>
-    <td><%# product.vat %></td>
-    <!-- <td><%# number_to_currency(product.eks_vat) %></td> -->
+    <td><%= product.total_price %></td>
+    <td><%= product.vat %></td>
+    <td><%= number_to_currency(product.eks_vat) %></td>
     <td><%= link_to 'Vis', product %> <%= link_to 'Rediger', edit_product_path(product) %> <%= link_to 'Slett', product, :confirm => 'Er du sikker?', :method => :delete %></td>
   </tr>
 <% end %>
