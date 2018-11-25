@@ -42,12 +42,9 @@
 	<li><%= check_box_tag('camp[product_ids][]', product.id, @camp.products.map {|c| c.id }.include?(product.id), :class => "pro_check") %>
 	<%= product.description %></li>
 	<% end %>
-	
+
 
 <li>
 <%= label_tag 'Offentlig' %>
 <%= f.select :public,  [['Ja', true], ['Nei', false], ] %>
 </li>
-
-
-
