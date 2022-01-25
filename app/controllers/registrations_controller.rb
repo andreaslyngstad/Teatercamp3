@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  skip_before_filter :login_required?, :only => [ :new, :create, :thank_you]
+  skip_before_action :login_required?, :only => [ :new, :create, :thank_you]
 
   def index
     @camps = Camp.where(:public => true)
@@ -44,7 +44,7 @@ class RegistrationsController < ApplicationController
   # POST /registrations.xml
   def create
     @option = Option.first
-    @registration = Registration.new(params[:registration])
+    @registration = Registration.new(registration_params)
     @pages = Page.order("lft")
     @camp = @registration.camp
     @registration.paid = false
@@ -76,7 +76,7 @@ class RegistrationsController < ApplicationController
     @registration = Registration.find(params[:id])
 
     respond_to do |format|
-      if @registration.update_attributes(params[:registration])
+      if @registration.update(registration_params)
         flash[:notice] = 'Påmeldingen ble oppdatert!'
         format.html { redirect_to(registrations_path) }
         format.js
@@ -99,6 +99,7 @@ class RegistrationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
   def thank_you
     @option = Option.first
     @parents = Page.roots
@@ -114,6 +115,22 @@ class RegistrationsController < ApplicationController
    @all_mails = @registrations.map{|reg| reg.billing_email}.uniq
 
   @camps = Camp.all
+  end
+
+  def registration_params
+      params.require(:registration).permit(:camp_id,
+        :paid,
+        :name,
+        :age,
+        :parent_one_name,
+        :parent_one_phone,
+        :parent_two_name,
+        :parent_two_phone,
+        :billing_email,
+        :tell,
+        :medical,
+        :camp_id
+       )
   end
 
 

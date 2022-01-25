@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
 
   def index
-    @pages = Page.find(:all)
+    @pages = Page.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @pages }
@@ -42,7 +42,7 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.xml
   def create
-    @page = Page.new(params[:page])
+    @page = Page.new(page_params)
 
     respond_to do |format|
       if @page.save
@@ -62,7 +62,7 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
 
     respond_to do |format|
-      if @page.update_attributes(params[:page])
+      if @page.update(page_params)
         flash[:notice] = 'Siden ble oppdatert.'
         format.html { redirect_to(@page) }
         format.xml  { head :ok }
@@ -109,4 +109,22 @@ class PagesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def page_params
+      params.require(:page).permit(
+        :name,:title,:body,
+        :parent_id,
+        :navlabel,
+        :lft,
+        :rgt,
+        :proposed_parent_id,
+        :nav_photo_file_name,
+        :nav_photo_content_type,
+        :nav_photo_file_size,
+        :nav_photo_updated_at,
+        :main_photo_file_name,
+        :main_photo_content_type,
+        :main_photo_file_size,
+        :main_photo_updated_at
+      )
+    end
 end

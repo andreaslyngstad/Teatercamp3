@@ -2,8 +2,15 @@ class InvoicesController < ApplicationController
   layout :resolve_layout
 
   def index
-    @invoices = Invoice.includes([:registration, :credit_note, {:registration => [{:camp=> [:products]}]}])
+    @invoices = Invoice.includes(:registration, :credit_note).where('made_date > ?', Time.now.prev_year(2)).order(made_date:"DESC")
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @invoices }
+    end
+  end
 
+  def all_invoices
+    @invoices = Invoice.includes(:registration, :credit_note)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @invoices }
@@ -36,7 +43,7 @@ class InvoicesController < ApplicationController
 
 
   def create
-    @invoice = Invoice.new(params[:Invoice])
+    @invoice = Invoice.new(invoice_params)
 
     respond_to do |format|
       if @invoice.save
@@ -144,5 +151,18 @@ class InvoicesController < ApplicationController
       text "Address: #{client.address}"
       text "Email: #{client.email}"
     end.render
+  end
+  def invoice_params
+    params.require(:invoice).permit(
+      :registration_id,
+      :number,
+      :created_at,
+      :updated_at,
+      :paid,
+      :sent,
+      :made_date,
+      :pay_by,
+      :reminder_date
+    )
   end
 end

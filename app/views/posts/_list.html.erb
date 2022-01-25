@@ -33,7 +33,7 @@
 		<h2><%= @post.title %></h2>
 		<p>Forfattet av <strong><%= @post.author.full_name %></strong></p>
 		<p>Postet: <%= @post.created_at.strftime('%d.%m.%y kl %H:%m')%></p>
-		<p>Kategorier: <%= @post.categories.collect {|c| c.name }.to_sentence(:two_words_connector => " og ") %></p>
+		<!-- <p>Kategorier: <#= @post.categories.collect {|c| c.name }.to_sentence(:two_words_connector => " og ") %></p> -->
 		<p><%= @post.lead  %></p>
 	<% end %>
 

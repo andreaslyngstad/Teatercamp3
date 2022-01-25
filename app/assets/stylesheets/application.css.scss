@@ -191,19 +191,19 @@ h1{border-bottom: 1px solid #641778;}
 
 #section1{
 
-	background: url(asset-path('public.jpg', image) ) 50% 50% / cover;
+	background: url(asset-path('public.jpg') ) 50% 50% / cover;
 }
 #section2{
-	background: url(asset-path("filmcamp.jpg", image)) 50% 50% / cover;
+	background: url(asset-path("filmcamp.jpg")) 50% 50% / cover;
 }
 #section3{
-	background: url(asset-path("om_oss.jpg", image)) 50% 50% / cover;
+	background: url(asset-path("om_oss.jpg")) 50% 50% / cover;
 }
 #section4{
-	background: url(asset-path("kurs.jpg", image)) 50% 50% / cover;
+	background: url(asset-path("kurs.jpg")) 50% 50% / cover;
 }
 #section5{
-	background: url(asset-path("skog.jpg", image)) 50% 50% / cover;
+	background: url(asset-path("skog.jpg")) 50% 50% / cover;
 }
 .new_camp{
 	height: 1000px;

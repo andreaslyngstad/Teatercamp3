@@ -3,7 +3,7 @@ class CampsController < ApplicationController
   # GET /camps.xml
   layout "application"
     def index
-    @camps = Camp.order("public DESC")
+    @camps = Camp.order("public DESC").includes(:registrations)
     if request.get? && !params[:id].blank?
       @camp = Camp.find(params[:id])
       elsif request.get? && params[:id].blank?
@@ -37,7 +37,7 @@ class CampsController < ApplicationController
   # GET /camps/1.xml
   def show
     @camp = Camp.find(params[:id])
-    @camps = Camp.find(:all)
+    @camps = Camp.all
 
     respond_to do |format|
       format.html { render :action => "show" }
@@ -47,7 +47,7 @@ class CampsController < ApplicationController
 
 
   def create
-    @camp = Camp.new(params[:camp])
+    @camp = Camp.new(camp_params)
     @camps = Camp.all
     @products = Product.all
     respond_to do |format|
@@ -67,7 +67,7 @@ class CampsController < ApplicationController
     params[:camp][:product_ids] ||= []
 
     respond_to do |format|
-      if @camp.update_attributes(params[:camp])
+      if @camp.update(camp_params)
 
         flash[:notice] = 'Campen ble oppdatert.'
         format.html { redirect_to(camps_path) }
@@ -91,5 +91,10 @@ class CampsController < ApplicationController
       format.html { redirect_to(camps_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def camp_params
+    params.require(:camp).permit(:name,:description,
+      :age1,:age2,:begin,:end,:participants,:public,:ingress, :product_ids =>[] )
   end
 end

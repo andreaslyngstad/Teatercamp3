@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   validates_presence_of :total_price, :description, :vat
-  has_many :pricings
+  has_many :pricings, inverse_of: :product
   has_many :camps
 
   def eks_vat
