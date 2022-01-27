@@ -1,6 +1,6 @@
 class PublicController < ApplicationController
-  skip_before_filter :login_required?
-  before_filter :set_all_categories,
+  skip_before_action :login_required?
+  before_action :set_all_categories,
                 :instantiate_controller_and_action_names
                 # :get_pages_for_tabs, :get_sub_tabs
 
@@ -21,7 +21,7 @@ class PublicController < ApplicationController
   def start
   end
   def view
-    @page = Page.find_by_name(params[:name])
+    @page = Page.where(name: params[:name]).first
     # @parents = Page.roots
     @option = Option.first
   end
@@ -46,7 +46,7 @@ class PublicController < ApplicationController
 
   def view_post
     @option = Option.first
-    @post = Post.find(params[:id], :include => [:author, :categories])
+    @post = Post.find(params[:id])
     @posts_til_liste = Post.eager_post
     render(:template => 'shared/view_post')
 
