@@ -2,11 +2,11 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Comment.find(:all)
+    @comments = Comment.all
 
     case params[:status]
       when 'godkjent'
-        @comments = Comment.find(:all, :conditions => "status = 'godkjent'", :order => 'created_at DESC')
+        @comments = Comment.where( "status = 'godkjent'", order: 'created_at DESC')
       when 'spam'
       @comments = Comment.find(:all, :conditions => "status = 'spam'", :order => 'created_at DESC')
       when 'alle'
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
           @comment.destroy
         end
       else
-       @comments = Comment.find(:all, :conditions => "status = 'nye'", :order => 'created_at DESC')
+       @comments = Comment.where( "status = 'godkjent'", order: 'created_at DESC')
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.xml
   def show
-    @comment = Comment.find(params[:id])
+    @comment = Comment.where(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

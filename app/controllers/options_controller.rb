@@ -2,7 +2,7 @@ class OptionsController < ApplicationController
   # GET /options
   # GET /options.xml
   def index
-   
+
    @option = Option.first if !Option.first.nil?
     @option = Option.new if @option.nil?
     respond_to do |format|
@@ -12,7 +12,7 @@ class OptionsController < ApplicationController
   end
 
   def create
-    @option = Option.new(params[:option])
+    @option = Option.new(option_params)
 
     respond_to do |format|
       if @option.save
@@ -32,7 +32,7 @@ class OptionsController < ApplicationController
     @option = Option.find(params[:id])
 
     respond_to do |format|
-      if @option.update_attributes(params[:option])
+      if @option.update_attributes(option_params)
         flash[:notice] = 'De nye innstillingene ble lagret.'
         format.html { redirect_to(options_path) }
         format.xml  { head :ok }
@@ -53,5 +53,15 @@ class OptionsController < ApplicationController
       format.html { redirect_to(options_url) }
       format.xml  { head :ok }
     end
+  end
+  def option_params
+      params.require(:option).permit(:app_name, :css,:owner_name,:meta_description,
+        :meta_keywords,
+        :quote1,
+        :quote2,
+        :quote3,
+        :quote4,
+        :account,
+        :vat_number)
   end
 end

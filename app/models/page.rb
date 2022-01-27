@@ -2,17 +2,11 @@ class Page < ActiveRecord::Base
 
   has_attached_file :nav_photo, :styles => { :small => "200x150#" }
   has_attached_file :main_photo, :styles => { :small => "250x250>" }
-
-  validates_attachment_size :nav_photo, :less_than => 1.megabytes
-  validates_attachment_size :main_photo, :less_than => 5.megabytes
-
-
   # acts_as_nested_set
   validates_presence_of :name
   validates_uniqueness_of :name, :scope => :proposed_parent_id
 
-  belongs_to :parent, :class_name => "Page", :foreign_key => 'parent_id'
-  after_save :move_to_proposed_parent
+
   def validate_on_update
     errors.add(:parent_id, "Cannot be the same as the category id") if parent_id == id
     errors.add(:parent_id, "Cannot be one of this categories children") if all_children_ids.include?(parent_id)

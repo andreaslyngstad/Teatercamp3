@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all # include all helpers, all the time
 
-  before_filter :login_required?, :instantiate_controller_and_action_names, :options
+  before_action :login_required?, :instantiate_controller_and_action_names, :options
   helper_method :current_user
 
 
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_all_categories
-    @all_categories = Category.find(:all, :order => 'name ASC')
+    @all_categories = Category.order 'name ASC'
   end
 
 

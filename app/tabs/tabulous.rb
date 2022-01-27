@@ -65,7 +65,7 @@ Tabulous.setup do
       link_path     { invoices_path }
       visible_when  { true }
       enabled_when  { true }
-      active_when   { in_actions('index', 'show').of_controller('invoices') }
+      active_when   { in_actions('index', 'show', 'all_invoices').of_controller('invoices') }
     end
 
     totals_subtab do

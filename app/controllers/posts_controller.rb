@@ -1,26 +1,26 @@
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
-  before_filter :set_all_categories
- 
+  before_action :set_all_categories
+
   def index
     @posts = Post.all
     if params[:id].blank?
-    @post = Post.find(:last)
+    @post = Post.last
       if !current_user.nil?
       @user = current_user.full_name
       end
   else
-    @post = Post.find(params[:id]) 
+    @post = Post.find(params[:id])
   end
-  
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
       format.rss
     end
   end
-  
+
   # GET /posts/1
   # GET /posts/1.xml
   def show
@@ -32,8 +32,8 @@ class PostsController < ApplicationController
       format.xml  { render :xml => @post }
     end
   end
-  
- 
+
+
 
   # GET /posts/new
   # GET /posts/new.xml
@@ -60,9 +60,9 @@ class PostsController < ApplicationController
     checked_categories = get_categories_from(params[:categories])
     removed_categories = @all_categories - checked_categories
     @user = current_user.id
-    @post = Post.new(params[:post])
+    @post = Post.new(product_params)
     @post.author = current_user
-   
+
     respond_to do |format|
       if @post.save
         checked_categories.each {|cat| @post.categories << cat if !@post.categories.include?(cat)}
@@ -72,7 +72,7 @@ class PostsController < ApplicationController
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
         @user = get_user_list
-        
+
         format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
@@ -85,10 +85,10 @@ class PostsController < ApplicationController
     @all_categories = get_all_categories
     checked_categories = get_categories_from(params[:categories])
     removed_categories = @all_categories - checked_categories
-    @post = Post.find(params[:id]) 
-    
+    @post = Post.find(params[:id])
+
     respond_to do |format|
-      if @post.update_attributes(params[:post])
+      if @post.update_attributes(product_params)
         checked_categories.each {|cat| @post.categories << cat if !@post.categories.include?(cat)}
         removed_categories.each {|cat| @post.categories.delete(cat) << cat if @post.categories.include?(cat)}
         flash[:notice] = 'Innlegget ble oppdatert.'
@@ -113,21 +113,24 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   private
 
   def get_user_list
     return User.find(:all).collect {|user| [user.full_name, user.id]}
   end
-  
+
   def get_all_categories
-    return Category.find(:all, :order => 'name ASC')
+    return Category.order( 'name ASC')
   end
-  
+
   def get_categories_from(cat_list)
     cat_list = [] if cat_list.blank?
     return cat_list.collect {|cid| Category.find_by_id(cid.to_i)}.compact
   end
+
+  def post_params
+      params.require(:post).permit(:title,:content,:author_id,:status,:created_at,:lead)
+    end
+
 end
-
-

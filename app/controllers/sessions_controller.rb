@@ -1,9 +1,9 @@
-# This controller handles the login/logout function of the site.  
+# This controller handles the login/logout function of the site.
 class SessionsController < ApplicationController
-  skip_before_filter :login_required?
+  skip_before_action :login_required?
  layout "login"
   def new
-   
+
   end
 
   def create
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_url, :notice => "Logged out!"
   end
-    
-  
- 
+
+
+
 end

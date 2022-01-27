@@ -25,30 +25,32 @@ Teatercamp3::Application.routes.draw do
   end
  root :to => "public#index", :name => "Start"
 
- match "/logout" => 'sessions#destroy', :as => :logout
+ get "/logout" => 'sessions#destroy', :as => :logout
  get "login"  => 'sessions#new', :as => :login
- match "/register"  => 'users#create', :as => :register
- match "/signup"  => 'users#new', :as => :signup
- match "/view_emails" => 'registrations#emails', :as => :emails
- match "/set_paid/:id" => 'invoices#set_paid', :as => :set_paid
- match "/category/:id" => 'public#category', :as => :category
- match "/comments/set_status" => "comments#set_status"
- match "/cms" => 'home#index', :as => :cms
- match "/view_blogg" => 'public#blogg', :as => :view_blogg
- match "/view_camps" => 'public#camps', :as => :view_camps
- match "/view_camp/:id" => 'public#view_camp', :as => :view_camp
- match "/view_page" => 'public#index', :as => :view_page
- match "/add_comment/:id" => "public#add_comment", :as => :add_comment
- match "/view_post" => 'public#view_post', :as => :title
- match 'view/:name' => 'public#view', :as => :view_page
- match 'invoice_send/:id' => 'invoices#invoice_send', :as => :invoice_send
- match 'send_reminder/:id' => 'invoices#reminder_send', :as => :send_reminder
- match 'send_creditnote/:id' => 'invoices#send_creditnote', :as => :send_creditnote
- match 'download_pdf/:id' => 'invoices#download_pdf', :as => :download_pdf
- match 'show_pdf/:id' => 'invoices#show_pdf', :as => :show_pdf
- match 'credit_note/:id' => 'invoices#credit_note', :as => :credit_note
- match 'show_credit_note/:id' => 'invoices#show_credit_note', :as => :show_credit_note
- match '/totals' => 'invoices#totals', :as => :totals
+ get "/register"  => 'users#create', :as => :register
+ get "/signup"  => 'users#new', :as => :signup
+ get "/view_emails" => 'registrations#emails', :as => :emails
+ get "/set_paid/:id" => 'invoices#set_paid', :as => :set_paid
+ # get "/category/:id" => 'public#category', :as => :category
+ get "/comments/set_status" => "comments#set_status"
+ get "/cms" => 'home#index', :as => :cms
+ get "/view_blogg" => 'public#blogg', :as => :view_blogg
+ get "/view_camps" => 'public#camps', :as => :view_camps
+ get "/view_camp/:id" => 'public#view_camp', :as => :view_camp
+ get "/view_page" => 'public#index', :as => :view_page
+ get "/add_comment/:id" => "public#add_comment", :as => :add_comment
+ get "/view_post" => 'public#view_post', :as => :title
+ get 'view/:name' => 'public#view', :as => :view_special
+ get 'invoice_send/:id' => 'invoices#invoice_send', :as => :invoice_send
+ get 'send_reminder/:id' => 'invoices#reminder_send', :as => :send_reminder
+ get 'send_creditnote/:id' => 'invoices#send_creditnote', :as => :send_creditnote
+ get 'download_pdf/:id' => 'invoices#download_pdf', :as => :download_pdf
+ get 'show_pdf/:id' => 'invoices#show_pdf', :as => :show_pdf
+ get 'all_invoices' => 'invoices#all_invoices', :as => :all_invoices
+ get 'credit_note/:id' => 'invoices#credit_note', :as => :credit_note
+ get 'show_credit_note/:id' => 'invoices#show_credit_note', :as => :show_credit_note
+ post '/totals' => 'invoices#totals', :as => :totals
+ get '/totals' => 'invoices#totals'
 
 
 

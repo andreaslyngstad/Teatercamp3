@@ -1,4 +1,4 @@
-<h1>Fakturaer</h1>
+<h1>Fakturaer</h1><%= link_to 'Alle Fakturaer', all_invoices_path %>
 <form>
     <input type="text" id="search">
 </form>
@@ -39,7 +39,7 @@ Ikke sendt
 <td><%= invoice.registration.billing_email %></td>
 <td><%= invoice.registration.camp.name %></td>
 <% if invoice.credit_note.nil? %>
-<td><%= number_to_currency(invoice.registration.camp.products.sum(:total_price)) %></td>
+<td><%= number_to_currency(invoice.total_price) %></td>
 	<% else %>
 	<td style="color:red;"><%= number_to_currency(invoice.credit_note.total) %></td>
 	<% end -%>

@@ -4,7 +4,7 @@ class InvoiceMailer < ActionMailer::Base
   def send_invoice(invoice)
     @invoice = invoice
     collecter
-    html = render_to_string(:action => "../invoices/show_pdf.html.erb")
+    html = render_to_string(view: "../invoices/show_pdf.html.erb")
      mail(:to => @registration.billing_email, :subject => "Faktura", :bcc => 'faktura@teatercamp.no') do |format|
       format.text
       format.html

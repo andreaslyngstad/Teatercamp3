@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.xml
   def create
-    @category = Category.new(params[:category])
+    @category = Category.new(categorie_params)
 
     respond_to do |format|
       if @category.save
@@ -35,7 +35,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     respond_to do |format|
-      if @category.update_attributes(params[:category])
+      if @category.update_attributes(categorie_params)
         flash[:notice] = 'Kategorien ble oppdatert'
         format.html { redirect_to(categories_path) }
         format.xml  { head :ok }
@@ -57,4 +57,10 @@ class CategoriesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def categorie_params
+    params.require(:categorie).permit(:name,:des)
+  end
+
+
+
 end
