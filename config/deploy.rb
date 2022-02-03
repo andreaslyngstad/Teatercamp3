@@ -3,8 +3,8 @@ lock "~> 3.16.0"
 
 set :application, 'teatercamp'
 set :repo_url, 'git@github.com:andreaslyngstad/Teatercamp3.git'
-set :deploy_to, "/var/www/vhosts/teatercamp.no/httpdocs/teatercamp.no"
-set :bundle_path, '/var/www/vhosts/teatercamp.no/httpdocs/teatercamp.no/gems'
+set :deploy_to, "/var/www/vhosts/teatercamp.no/httpdocs/"
+set :bundle_path, '/var/www/vhosts/teatercamp.no/httpdocs/gems'
 
 set :linked_files, %w{config/database.yml config/email.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
