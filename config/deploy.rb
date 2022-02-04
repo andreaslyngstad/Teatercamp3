@@ -8,6 +8,16 @@ set :bundle_path, '/var/www/vhosts/teatercamp.no/httpdocs/gems'
 
 set :linked_files, %w{config/database.yml config/email.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb)
+set :keep_releases, 5
+set :format, :pretty
+set :log_level, :debug
+set :pty, true
+
+
+set :rails_assets_groups, :assets
+set :assets_roles, [:web, :app]
+set :keep_assets, 2
 
 # namespace :deploy do
 #   namespace :assets do

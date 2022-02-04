@@ -9,11 +9,7 @@ gem 'tabulous', git: 'https://github.com/andreaslyngstad/tabulous.git'
 gem 'better_nested_set'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip"
-gem "capistrano"
-gem 'capistrano-bundler'
-gem 'capistrano-rails'
-gem 'capistrano-rvm'
-gem 'capistrano-passenger'
+
 gem 'bootsnap'
 
 
@@ -21,7 +17,14 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'test-unit'
 end
-
+group :development do
+  gem "capistrano"
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-faster-assets', '~> 1.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
+end
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
