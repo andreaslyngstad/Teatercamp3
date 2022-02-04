@@ -1,0 +1,747 @@
+/*
+
+
+*/
+/* line 6, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+h1 a {
+  color: red;
+}
+
+/* line 8, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#notice_notice {
+  background: #2e2;
+  color: #222;
+}
+
+/* line 9, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#warning {
+  background: #ee0;
+  color: #222;
+}
+
+/* line 10, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#notice_error {
+  background: #e22;
+  color: #fff;
+}
+
+/* line 11, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.notice_message {
+  display: block;
+  width: 690px;
+  border: solid 1px #000;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* line 12, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.error_message {
+  display: block;
+  width: 690px;
+  border: solid 2px #000;
+  padding: 10px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* line 13, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.error_messages {
+  color: #e22;
+}
+
+/* line 14, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.errorExplanation {
+  text-align: center;
+  background: #e22;
+  color: #fff;
+}
+
+/* line 16, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#header {
+  background: #000024;
+}
+
+/* line 17, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#header_wrapper {
+  position: relative;
+  width: 1000px;
+  height: 150px;
+}
+
+/* line 19, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.js .checkbox_toogle {
+  display: none;
+}
+
+/* line 22, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.send_link_wr {
+  cursor: pointer;
+}
+
+/* line 23, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.spinning {
+  width: 15px;
+  height: 15px;
+  float: left;
+  margin: 5px 15px 0 15px;
+  background: url(/../images/spinner2.gif) no-repeat right !important;
+}
+
+/* line 24, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.passed {
+  width: 15px;
+  height: 15px;
+  float: left;
+  margin: 5px 15px 0 15px;
+  background: url(/../images/tick.jpg) no-repeat right !important;
+}
+
+/* line 25, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.toggle {
+  display: block;
+  width: 50px;
+  background-color: red;
+}
+
+/* line 32, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.toggle.checked {
+  background-color: green;
+}
+
+/* line 36, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.tabs {
+  position: absolute;
+  top: 117px;
+  left: 200px;
+  width: 100%;
+  font-family: Verdana,Helvetica,sans-serif;
+  font-size: 100%;
+}
+
+/* line 43, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.tabs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 32px;
+}
+
+/* line 49, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.tabs li {
+  float: left;
+  margin: 0;
+  padding: 0;
+  height: 31px;
+  /*--Subtract 1px from the height of the unordered list--*/
+  line-height: 31px;
+  /*--Vertically aligns the text within the tab--*/
+  border: 1px solid #999;
+  border-left: none;
+  margin-bottom: -1px;
+  /*--Pull the list item down 1px--*/
+  overflow: hidden;
+  position: relative;
+  background: #e0e0e0;
+}
+
+/* line 62, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.tabs li a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  font-size: 1.2em;
+  padding: 0 20px;
+  border: 1px solid #fff;
+  /*--Gives the bevel look with a 1px white border inside the list item--*/
+  outline: none;
+}
+
+/* line 71, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.tabs li:hover {
+  background-color: #ccc;
+}
+
+/* line 74, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.tabs li.active, .tabsH li.active a:hover {
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+/* line 81, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.subtabs {
+  position: absolute;
+  top: 160px;
+  left: 200px;
+  width: 100%;
+  font-family: Verdana,Helvetica,sans-serif;
+  font-size: 100%;
+}
+
+/* line 87, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.subtabs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 32px;
+}
+
+/* line 93, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.subtabs li {
+  float: left;
+  margin: 0;
+  padding: 0;
+  height: 31px;
+  /*--Subtract 1px from the height of the unordered list--*/
+  line-height: 31px;
+  /*--Vertically aligns the text within the tab--*/
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 106, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.subtabs li a {
+  color: #000;
+  display: block;
+  font-size: 1.2em;
+  padding: 0 20px;
+  border: 1px solid #fff;
+  /*--Gives the bevel look with a 1px white border inside the list item--*/
+  outline: none;
+}
+
+/* line 116, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.subtabs li.active, .tabs li.active a:hover {
+  text-decoration: underline;
+}
+
+/* line 122, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.subtabs li a {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+/* line 128, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#logged_in {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* line 129, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#logged_in a {
+  color: #fff;
+}
+
+/* line 130, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#logged_in a:hover {
+  color: #FC1004;
+}
+
+/* line 132, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.invoice_show tr td {
+  padding: 0 20px 0 0;
+}
+
+/* line 139, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#content {
+  background: #fff;
+}
+
+/* line 140, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#content_wrapper {
+  width: 960px;
+  margin: 0 auto;
+  min-height: 400px;
+  height: auto !important;
+  height: 400px;
+  padding: 10px 0px 30px 0px;
+}
+
+/* line 141, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#content_wrapper #content_l {
+  width: 690px;
+  clear: left;
+  float: left;
+  padding: 10px 10px 10px 0px;
+  border-right: 1px solid #eaeaea;
+  min-height: 400px;
+  height: auto !important;
+  height: 400px;
+}
+
+/* line 142, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#content_wrapper #content_l p {
+  margin-bottom: 10px;
+}
+
+/* line 143, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#content_wrapper #content_r a {
+  font-size: 1em;
+}
+
+/* line 144, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#content_wrapper #content_r {
+  width: 249px;
+  float: left;
+  padding-left: 10px;
+}
+
+/* line 148, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#sub_nav ul {
+  padding: 15px 0px 15px 0px;
+}
+
+/* line 149, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#sub_nav ul li {
+  list-style: none;
+}
+
+/* line 150, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#sub_nav ul li b {
+  display: block;
+  background: url(/../images/pil.png) no-repeat 0px;
+  padding: 3px 0px 3px 20px;
+  color: #cc0000;
+  font-weight: bold;
+}
+
+/* line 151, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#sub_nav ul li a {
+  display: block;
+  color: #000;
+  font-weight: bold;
+}
+
+/* line 152, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#sub_nav ul li a:hover {
+  margin-left: 5px;
+}
+
+/* line 154, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#search_form {
+  width: 249px;
+  height: 59px;
+  margin: 10px 0px 10px 0px;
+  background: url(/../images/search.png) no-repeat;
+  position: relative;
+}
+
+/* line 155, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#search_form input {
+  padding: 5px 5px 5px 5px;
+  font-size: 16px;
+  border: 0;
+  position: absolute;
+  left: 13px;
+  top: 12px;
+  background: none;
+  width: 160px;
+  color: #000;
+}
+
+/* line 156, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#search_form .submit {
+  cursor: pointer;
+  padding: 5px 0px 5px 0px;
+  position: absolute;
+  left: 187px;
+  top: 12px;
+  background: none;
+  color: #fff;
+  width: 50px;
+  font-weight: bold;
+}
+
+/* line 160, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#footer {
+  background: url(/../images/footer_bg.png) repeat-x;
+}
+
+/* line 161, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#footer_wrapper {
+  width: 960px;
+  margin: 0 auto;
+  min-height: 250px;
+  height: auto !important;
+  height: 250px;
+}
+
+/* line 162, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#footer_wrapper .boks {
+  float: left;
+  width: 310px;
+  height: 130px;
+  padding: 20px 10px 20px 0px;
+}
+
+/* line 163, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#footer_wrapper #footer_text {
+  color: #fff;
+  font-size: 11px;
+  padding-top: 20px;
+  clear: both;
+}
+
+/* line 164, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#footer h3 {
+  font-family: georgia;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* line 165, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#footer ul {
+  padding: 2px 0px 0px 0px;
+}
+
+/* line 166, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#footer ul li {
+  list-style: none;
+}
+
+/* line 167, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#footer ul li a {
+  display: block;
+  padding: 0px 0px 0px 0px;
+  color: #000;
+  font-weight: bold;
+}
+
+/* line 168, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+#footer ul li a:hover {
+  color: #999;
+}
+
+/* line 170, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout {
+  padding: 20px 0px 20px 0px;
+}
+
+/* line 171, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout li {
+  list-style: none;
+  clear: both;
+  padding-top: 2px;
+}
+
+/* line 172, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout li label {
+  list-style: none;
+  width: 120px;
+  float: left;
+}
+
+/* line 173, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout li input {
+  width: 400px;
+  float: left;
+  padding: 2px;
+  border: 1px solid #999;
+  background: #fff;
+}
+
+/* line 174, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout li select {
+  width: 135px;
+  float: left;
+  padding: 2px;
+  border: 1px solid #999;
+  background: #fff;
+}
+
+/* line 175, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout li .pro_check {
+  width: 20px;
+  float: left;
+  margin: 0 0 0 118px;
+}
+
+/* line 176, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout li textarea {
+  width: 400px;
+  float: left;
+  padding: 2px;
+  border: 1px solid #999;
+  background: #fff;
+}
+
+/* line 177, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout li .submit {
+  width: auto;
+  cursor: pointer;
+  margin-right: 2px;
+}
+
+/* line 179, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_l {
+  padding: 20px 0px 20px 0px;
+}
+
+/* line 180, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_l li {
+  list-style: none;
+  clear: both;
+  padding-top: 2px;
+}
+
+/* line 181, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_l li label {
+  list-style: none;
+}
+
+/* line 182, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_l li input,
+.form_layout_adm_l li select,
+.form_layout_adm_l li textarea {
+  width: 690px;
+  float: left;
+  padding: 2px;
+  border: 1px solid #999;
+  background: #fff;
+}
+
+/* line 185, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_l li .submit {
+  width: 80px;
+  cursor: pointer;
+  margin-right: 2px;
+}
+
+/* line 187, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_r {
+  padding: 20px 0px 20px 0px;
+}
+
+/* line 188, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_r li {
+  list-style: none;
+  clear: both;
+  padding-top: 2px;
+}
+
+/* line 189, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_r li label {
+  list-style: none;
+}
+
+/* line 190, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_r li checkbox {
+  border: 1px solid #999;
+  background: #fff;
+}
+
+/* line 191, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.form_layout_adm_r li select {
+  width: 200px;
+  float: left;
+  padding: 2px;
+  border: 1px solid #999;
+  background: #fff;
+}
+
+/* line 194, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.list_regular li {
+  list-style: none;
+  clear: both;
+  width: 690px;
+}
+
+/* line 196, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.list_regular_adm {
+  width: 690px;
+}
+
+/* line 197, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.list_regular_adm li {
+  list-style: none;
+  clear: both;
+  height: 18px;
+  background: #eee;
+  padding: 3px 5px 0px 5px;
+  margin-top: 2px;
+}
+
+/* line 198, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.list_regular_adm li p {
+  width: 100px;
+  float: left;
+}
+
+/* line 199, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.list_regular_adm li p.r {
+  float: right;
+}
+
+/* line 201, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.table_regular_adm {
+  width: 690px;
+}
+
+/* line 202, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.table_regular_adm tr {
+  background: #eee;
+}
+
+/* line 203, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.table_regular_adm tr th,
+.table_regular_adm tr td {
+  text-align: left;
+  padding: 3px 5px 3px 5px;
+  border-bottom: 2px solid #fff;
+}
+
+/* line 205, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.table_regular_adm tr td.right {
+  text-align: right;
+}
+
+/* line 206, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+table.tablesorter {
+  font-family: arial;
+  background-color: #CDCDCD;
+  margin: 10px 0pt 15px;
+  font-size: 8pt;
+  width: 100%;
+  text-align: left;
+}
+
+/* line 214, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+  background-color: #e6EEEE;
+  border: 1px solid #FFF;
+  font-size: 8pt;
+  padding: 4px;
+}
+
+/* line 220, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+table.tablesorter thead tr .header {
+  background-image: url(/assets/bg-40e9c2b688f78c0cd43c60298ecd353fcd54745bb6e83a3ffa6b0fb19e1936fb.gif);
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+}
+
+/* line 227, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+table.tablesorter tbody td {
+  color: #3D3D3D;
+  padding: 4px;
+  background-color: #FFF;
+  vertical-align: top;
+}
+
+/* line 233, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+table.tablesorter tbody tr.odd td {
+  background-color: #F0F0F6;
+}
+
+/* line 236, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+table.tablesorter thead tr .headerSortUp {
+  background-image: url(/assets/asc-1bf8b7f7affee67f19707d3514c565805efdf2e5801ea6b4186a3bed176e1975.gif);
+}
+
+/* line 240, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+table.tablesorter thead tr .headerSortDown {
+  background-image: url(/assets/desc-d8e961459052dc6a9ca57e587cbd89105322af6b87cb73d1b59f0e8b4ea4bf81.gif);
+}
+
+/* line 243, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+  background-color: #8dbdd8;
+}
+
+/* line 246, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 247, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+html, body {
+  font-family: arial;
+  font-size: 12px;
+  background: #fff;
+  height: 101%;
+}
+
+/* line 248, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.clr {
+  clear: both;
+}
+
+/* line 249, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.l {
+  float: left;
+}
+
+/* line 250, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.r {
+  float: right;
+}
+
+/* line 252, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+h1 {
+  font-family: georgia;
+  font-size: 26px;
+}
+
+/* line 253, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+h2 {
+  font-family: georgia;
+  font-size: 20px;
+}
+
+/* line 254, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+h2 a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 255, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 256, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+a:hover {
+  color: #7c121e;
+}
+
+/* line 258, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+p {
+  padding: 5px 0px 5px 0px;
+}
+
+/* line 259, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+ul, ol {
+  padding: 0px 0px 0px 30px;
+}
+
+/* line 260, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.post {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+/* line 261, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.css1 {
+  font-size: 1.0em;
+}
+
+/* line 262, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.css2 {
+  font-size: 1.2em;
+}
+
+/* line 263, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.css3 {
+  font-size: 1.4em;
+}
+
+/* line 264, /mnt/c/ws/Teatercamp3/app/assets/stylesheets/admin.css.scss */
+.css4 {
+  font-size: 1.6em;
+}
